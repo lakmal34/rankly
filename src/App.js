@@ -102,7 +102,7 @@ function Signup() {
             <div className="d-flex flex-row py-2 align-items-center justify-content-between">
               <div className="d-flex flex-row align-items-center">
                 <img src={logo} className="Applogo mr-3" alt="logo" />
-                <h2 className="my-0">Rankly</h2>
+                <h2 className="my-0">Ranklys</h2>
               </div>
             </div>
           </div>
