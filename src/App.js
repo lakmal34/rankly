@@ -7,8 +7,8 @@ import {
 } from "react-router-dom";
 import './utility.less';
 import './App.less';
-import { Button,Divider,Form,Input,Select,Upload,message,Card,Typography,Dropdown,Menu,Image,Radio,Checkbox,Tabs,Modal } from 'antd';
-import { PlusOutlined,MoreOutlined,HeartOutlined,MessageOutlined,ShareAltOutlined,SearchOutlined,BellOutlined,HomeOutlined,FileAddOutlined,MailOutlined,UpOutlined,DownOutlined,AppstoreOutlined,UnorderedListOutlined,FilterOutlined } from '@ant-design/icons';
+import { Breadcrumb,Button,Divider,Form,Input,Select,Upload,message,Card,Typography,Dropdown,Menu,Image,Radio,Checkbox,Tabs,Modal } from 'antd';
+import { LogoutOutlined,QuestionCircleOutlined,SafetyOutlined,LockOutlined,ToolOutlined,PlusOutlined,MoreOutlined,HeartOutlined,MessageOutlined,ShareAltOutlined,SearchOutlined,BellOutlined,HomeOutlined,FileAddOutlined,MailOutlined,UpOutlined,DownOutlined,AppstoreOutlined,UnorderedListOutlined,FilterOutlined,HeartFilled } from '@ant-design/icons';
 
 import logo from './assets/img/logoPlaceholder.png';
 import avatar from './assets/img/avatar.png';
@@ -62,6 +62,24 @@ export default function BasicExample() {
   return (
   <Router>
     <Switch>
+      <Route path="/bookmarkdetails">
+        <BookmarkDetails />
+      </Route>
+      <Route path="/mymessages">
+        <MyMessages />
+      </Route>
+      <Route path="/accountsettings">
+        <AccountSettings />
+      </Route>
+      <Route path="/myfollowings">
+        <MyFollowings />
+      </Route>
+      <Route path="/mycomments">
+        <MyComments />
+      </Route>
+      <Route path="/myprofile">
+        <MyProfile />
+      </Route>
       <Route path="/bookmarkList">
         <BookmarkList />
       </Route>
@@ -1009,6 +1027,9 @@ function FavouriteList(){
                     width={'100%'}
                     src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
                     />
+                    <div className="favOverlay">
+                          <HeartFilled style={{fontSize:"24px",}}/>
+                        </div>
                   </div>
                   <div className="d-flex flex-column ml-2">
                     <Text type="primary" strong>The best wireless headphones you can buy in 2020</Text>
@@ -1029,6 +1050,9 @@ function FavouriteList(){
                     width={'100%'}
                     src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
                     />
+                    <div className="favOverlay">
+                      <HeartFilled style={{fontSize:"24px",}}/>
+                    </div>
                   </div>
                   <div className="d-flex flex-column ml-2">
                     <Text type="primary" strong>Sony WH-1000XM4</Text>
@@ -1134,7 +1158,609 @@ function BookmarkList(){
 function BookmarkDetails() {
   return(
     <div>
+      <div className="container-fluid px-0 fixedTop bg-white">
+        <div className="container navBar">
+          <div className="d-flex flex-row py-2 align-items-center justify-content-between">
+            <div className="d-flex flex-row align-items-center">
+              <img src={logo} className="Applogo mr-3" alt="logo" />
+              <h2 className="my-0">Rankly</h2>
+            </div>
+            <div className="d-flex flex-row align-items-center">
+              <SearchOutlined style={{ fontSize: '24px'}} className="mr-4"/>
+              <BellOutlined style={{ fontSize: '24px'}} className="mr-4"/>
+              <div className="navAvatarImgWrap">
+                <img src={avatar} className="navAvatarImg"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <Divider className="my-0"/>
+      </div>
 
+      <div className="container bookmarkDetails">
+        <div className="row">
+          <div className="col-12 px-0 mb-3 mt-3">
+            <div className="px-3">
+            <Breadcrumb>
+              <Breadcrumb.Item>Saved </Breadcrumb.Item>
+              <Breadcrumb.Item>Christmas gifts</Breadcrumb.Item>
+            </Breadcrumb>
+            </div>
+          </div>
+          <div className="col-12 px-0">
+            <div className="d-flex flex-row detailsSecondaryCard px-3 py-3">
+              <div className="cardBodyImgWrap flex-shrink-0">
+                <Image
+                width={'100%'}
+                src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                />
+              </div>
+              <div className="d-flex flex-column ml-2">
+                <Text type="primary" strong>The best wireless headphones you can buy in 2020</Text>
+                <span className="d-flex flex-row">
+                  <Text type="secondary" className="mr-3">Jane Cooper</Text>
+                  <Text type="secondary">8 month ago</Text>
+                </span>
+              </div>
+            </div>
+            <Divider className="my-0"/>
+          </div>
+          <div className="col-12 px-0">
+            <div className="d-flex flex-row detailsSecondaryCard px-3 py-3">
+              <div className="cardBodyImgWrap flex-shrink-0">
+                <Image
+                width={'100%'}
+                src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                />
+              </div>
+              <div className="d-flex flex-column ml-2">
+                <Text type="primary" strong>The best wireless headphones you can buy in 2020</Text>
+                <Link>The best wireless headphones you can buy in 2020</Link>
+                <span className="d-flex flex-row">
+                  <Text type="secondary" className="mr-3">Jane Cooper</Text>
+                  <Text type="secondary">8 month ago</Text>
+                </span>
+              </div>
+            </div>
+            <Divider className="my-0"/>
+          </div>
+        </div>
+      </div>
+
+      <div className="container-fluid px-0 fixedBottom bg-white">
+        <Divider className="my-0"/>
+          <div className="container navBar">
+            <div className="d-flex flex-row py-3">
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <HomeOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex align-items-center flex-fill align-items-center justify-content-center">
+                <HeartOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <FileAddOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+              <img src={bookmark}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <MailOutlined style={{ fontSize: '24px'}}/>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  )
+}
+
+function MyProfile() {
+  return(
+    <div>
+      <div className="container-fluid px-0 fixedTop bg-white">
+        <div className="container navBar">
+          <div className="d-flex flex-row py-2 align-items-center justify-content-between">
+            <div className="d-flex flex-row align-items-center">
+              <img src={logo} className="Applogo mr-3" alt="logo" />
+              <h2 className="my-0">Rankly</h2>
+            </div>
+            <div className="d-flex flex-row align-items-center">
+              <SearchOutlined style={{ fontSize: '24px'}} className="mr-4"/>
+              <BellOutlined style={{ fontSize: '24px'}} className="mr-4"/>
+              <div className="navAvatarImgWrap">
+                <img src={avatar} className="navAvatarImg"/>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        <Divider className="my-0"/>
+      </div>
+
+      <div className="container myProfile">
+        <div className="row">
+          <div className="col-12 px-0">
+            <div className="d-flex flex-row justify-content-between px-3 py-3">
+              <div className="d-flex flex-row align-items-center">
+                <div className="myProfileAvatarWrap">
+                  <img src={avatar} className="myProfileAvatar"/>
+                </div>
+                <div className="ml-3">
+                  <Title level={4} className="mb-0">Jane Cooper</Title>
+                  <Text type="secondary">Musician | Vocalist</Text>
+                </div>
+              </div>
+              <Button>Follow</Button>
+            </div>
+            <div className="customSecondaryBar">
+              <Tabs defaultActiveKey="1">
+                <TabPane tab="Lists" key="1">
+                  <div className="col-12 px-0">
+                    <div className="d-flex flex-row detailsSecondaryCard px-3 py-3">
+                      <div className="cardBodyImgWrap flex-shrink-0">
+                        <Image
+                        width={'100%'}
+                        src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                        />
+                      </div>
+                      <div className="d-flex flex-column ml-2">
+                        <Text type="primary" strong>The best wireless headphones you can buy in 2020</Text>
+                        <span className="d-flex flex-row">
+                          <Text type="secondary" className="mr-3">Jane Cooper</Text>
+                          <Text type="secondary">8 month ago</Text>
+                        </span>
+                      </div>
+                    </div>
+                    <Divider className="my-0"/>
+                  </div>
+                </TabPane>
+                <TabPane tab="Favorites" key="2">
+                  <div className="col-12 px-0">
+                    <div className="d-flex flex-row detailsSecondaryCard px-3 py-3">
+                      <div className="cardBodyImgWrap flex-shrink-0">
+                        <Image
+                        width={'100%'}
+                        src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                        />
+                        <div className="favOverlay">
+                          <HeartFilled style={{fontSize:"24px",}}/>
+                        </div>
+                      </div>
+                      <div className="d-flex flex-column ml-2">
+                        <Text type="primary" strong>The best wireless headphones you can buy in 2020</Text>
+                        <span className="d-flex flex-row">
+                          <Text type="secondary" className="mr-3">Jane Cooper</Text>
+                          <Text type="secondary">8 month ago</Text>
+                        </span>
+                      </div>
+                    </div>
+                    <Divider className="my-0"/>
+                  </div>
+                </TabPane>
+                <TabPane tab="Squads">
+                  <div className="col-12 px-0">
+                    <div className="d-flex flex-row detailsSecondaryCard px-3 py-3">
+                      <div className="cardBodyImgWrap flex-shrink-0">
+                        <Image
+                        width={'100%'}
+                        src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                        />
+                      </div>
+                      <div className="d-flex flex-column ml-2">
+                        <Text type="primary" strong>Musicaly</Text>
+                        <span className="d-flex flex-row">
+                          <Text type="secondary" className="mr-3">For music enthusiasts</Text>
+                        </span>
+                      </div>
+                    </div>
+                    <Divider className="my-0"/>
+                  </div>
+                </TabPane>
+              </Tabs>
+              <div className="myProfileMore">
+              <Dropdown overlay={menu} placement="bottomRight" arrow>
+                <Button>More <DownOutlined /></Button>
+              </Dropdown>
+            </div>
+          </div>
+          </div>
+          
+        </div>
+      </div>
+
+      <div className="container-fluid px-0 fixedBottom bg-white">
+        <Divider className="my-0"/>
+          <div className="container navBar">
+            <div className="d-flex flex-row py-3">
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <HomeOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex align-items-center flex-fill align-items-center justify-content-center">
+                <HeartOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <FileAddOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+              <img src={bookmark}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <MailOutlined style={{ fontSize: '24px'}}/>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  )
+}
+
+function MyComments(){
+  return(
+    <div>
+      <div className="container-fluid px-0 fixedTop bg-white">
+        <div className="container navBar">
+          <div className="d-flex flex-row py-2 align-items-center justify-content-between">
+            <div className="d-flex flex-row align-items-center">
+              <img src={logo} className="Applogo mr-3" alt="logo" />
+              <h2 className="my-0">Rankly</h2>
+            </div>
+            <div className="d-flex flex-row align-items-center">
+              <SearchOutlined style={{ fontSize: '24px'}} className="mr-4"/>
+              <BellOutlined style={{ fontSize: '24px'}} className="mr-4"/>
+              <div className="navAvatarImgWrap">
+                <img src={avatar} className="navAvatarImg"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <Divider className="my-0"/>
+      </div>
+
+      <div className="container myComments">
+        <div className="row">
+          <div className="col-12 px-0">
+            <div className="d-flex flex-row justify-content-between px-3 py-3">
+              <div className="d-flex flex-row align-items-center">
+                <div className="myProfileAvatarWrap">
+                  <img src={avatar} className="myProfileAvatar"/>
+                </div>
+                <div className="ml-3">
+                  <Title level={4} className="mb-0">Jane Cooper</Title>
+                  <Text type="secondary">Musician | Vocalist</Text>
+                </div>
+              </div>
+              <Button>Follow</Button>
+            </div>
+            <div className="customSecondaryBar">
+              <Tabs>
+                <TabPane tab="Lists">
+                </TabPane>
+                <TabPane tab="Favorites">
+                </TabPane>
+                <TabPane tab="Squads">
+                </TabPane>
+              </Tabs>
+              <div className="myProfileMore">
+                <Dropdown overlay={menu} placement="bottomRight" arrow>
+                  <Button>More <DownOutlined /></Button>
+                </Dropdown>
+              </div>
+            </div>
+          </div>
+          <div className="col-12 px-0">
+            <div className="d-flex flex-row detailsSecondaryCard px-3 py-3">
+              <div className="cardBodyImgWrap flex-shrink-0">
+                <Image
+                width={'100%'}
+                src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                />
+              </div>
+              <div className="d-flex flex-column ml-3">
+                <Text type="primary">The best wireless headphones you can buy in 2020</Text>
+                <span className="d-flex flex-row">
+                  <Text type="secondary" className="mr-3">Jane Cooper</Text>
+                  <Text type="secondary">8 month ago</Text>
+                </span>
+              </div>
+            </div>
+            <Divider className="my-0"/>
+          </div>
+        </div>
+      </div>
+
+      <div className="container-fluid px-0 fixedBottom bg-white">
+        <Divider className="my-0"/>
+          <div className="container navBar">
+            <div className="d-flex flex-row py-3">
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <HomeOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex align-items-center flex-fill align-items-center justify-content-center">
+                <HeartOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <FileAddOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+              <img src={bookmark}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <MailOutlined style={{ fontSize: '24px'}}/>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  )
+}
+
+function MyFollowings(){
+  return(
+    <div>
+      <div className="container-fluid px-0 fixedTop bg-white">
+        <div className="container navBar">
+          <div className="d-flex flex-row py-2 align-items-center justify-content-between">
+            <div className="d-flex flex-row align-items-center">
+              <img src={logo} className="Applogo mr-3" alt="logo" />
+              <h2 className="my-0">Rankly</h2>
+            </div>
+            <div className="d-flex flex-row align-items-center">
+              <SearchOutlined style={{ fontSize: '24px'}} className="mr-4"/>
+              <BellOutlined style={{ fontSize: '24px'}} className="mr-4"/>
+              <div className="navAvatarImgWrap">
+                <img src={avatar} className="navAvatarImg"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <Divider className="my-0"/>
+      </div>
+
+      <div className="container myComments">
+        <div className="row">
+          <div className="col-12 px-0">
+            <div className="d-flex flex-row justify-content-between px-3 py-3">
+              <div className="d-flex flex-row align-items-center">
+                <div className="myProfileAvatarWrap">
+                  <img src={avatar} className="myProfileAvatar"/>
+                </div>
+                <div className="ml-3">
+                  <Title level={4} className="mb-0">Jane Cooper</Title>
+                  <Text type="secondary">Musician | Vocalist</Text>
+                </div>
+              </div>
+              <Button>Follow</Button>
+            </div>
+            <div className="customSecondaryBar">
+              <Tabs>
+                <TabPane tab="Lists">
+                </TabPane>
+                <TabPane tab="Favorites">
+                </TabPane>
+                <TabPane tab="Squads">
+                </TabPane>
+              </Tabs>
+              <div className="myProfileMore">
+                <Dropdown overlay={menu} placement="bottomRight" arrow>
+                  <Button>More <DownOutlined /></Button>
+                </Dropdown>
+              </div>
+            </div>
+          </div>
+          <div className="col-12 px-0">
+            <div className="d-flex flex-row detailsSecondaryCard px-3 py-3">
+              <div className="cardBodyImgWrap flex-shrink-0">
+                <Image
+                width={'100%'}
+                src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                />
+              </div>
+              <div className="d-flex flex-column ml-3">
+                <Text type="primary">Boy Pablo</Text>
+                <span className="d-flex flex-row">
+                  <Text type="secondary" className="mr-3">Nostalgic indie-pop</Text>
+                </span>
+              </div>
+            </div>
+            <Divider className="my-0"/>
+          </div>
+        </div>
+      </div>
+
+      <div className="container-fluid px-0 fixedBottom bg-white">
+        <Divider className="my-0"/>
+          <div className="container navBar">
+            <div className="d-flex flex-row py-3">
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <HomeOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex align-items-center flex-fill align-items-center justify-content-center">
+                <HeartOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <FileAddOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+              <img src={bookmark}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <MailOutlined style={{ fontSize: '24px'}}/>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  )
+}
+
+function AccountSettings(){
+  return(
+    <div>
+      <div className="container-fluid px-0 fixedTop bg-white">
+        <div className="container navBar">
+          <div className="d-flex flex-row py-2 align-items-center justify-content-between">
+            <div className="d-flex flex-row align-items-center">
+              <img src={logo} className="Applogo mr-3" alt="logo" />
+              <h2 className="my-0">Rankly</h2>
+            </div>
+            <div className="d-flex flex-row align-items-center">
+              <SearchOutlined style={{ fontSize: '24px'}} className="mr-4"/>
+              <BellOutlined style={{ fontSize: '24px'}} className="mr-4"/>
+              <div className="navAvatarImgWrap">
+                <img src={avatar} className="navAvatarImg"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <Divider className="my-0"/>
+      </div>
+
+      <div className="container accountsettings">
+        <div className="row">
+          <div className="col-12 px-0">
+          <div className="d-flex flex-row px-3 py-3">
+              <div className="d-flex flex-row align-items-center">
+                <div className="myProfileAvatarWrap">
+                  <img src={avatar} className="myProfileAvatar"/>
+                </div>
+                <div className="ml-3 d-flex flex-column">
+                  <Text type="primary">Jane Cooper</Text>
+                  <Text type="secondary">Musician | Vocalist</Text>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-12 px-0 settingMenu">
+            <div className="d-flex flex-row detailsSecondaryCard px-3 py-3 align-items-center">
+                <ToolOutlined className="mr-3" style={{fontSize:"24px"}} />
+                <Text type="primary">Profile Settings</Text>
+            </div>
+            <Divider className="my-0"/>
+          </div>
+          <div className="col-12 px-0 settingMenu">
+            <div className="d-flex flex-row detailsSecondaryCard px-3 py-3 align-items-center">
+                <LockOutlined className="mr-3" style={{fontSize:"24px"}} />
+                <Text type="primary">Account and Security</Text>
+            </div>
+            <Divider className="my-0"/>
+          </div>
+          <div className="col-12 px-0 settingMenu">
+            <div className="d-flex flex-row detailsSecondaryCard px-3 py-3 align-items-center">
+                <SafetyOutlined className="mr-3" style={{fontSize:"24px"}} />
+                <Text type="primary">Privacy  Policy</Text>
+            </div>
+            <Divider className="my-0"/>
+          </div>
+          <div className="col-12 px-0 settingMenu">
+            <div className="d-flex flex-row detailsSecondaryCard px-3 py-3 align-items-center">
+                <QuestionCircleOutlined className="mr-3" style={{fontSize:"24px"}} />
+                <Text type="primary">Help Center</Text>
+            </div>
+            <Divider className="my-0"/>
+          </div>
+          <div className="col-12 px-0 settingMenu">
+            <div className="d-flex flex-row detailsSecondaryCard px-3 py-3 align-items-center">
+                <Text type="danger"><LogoutOutlined className="mr-3" style={{fontSize:"24px"}}/></Text>
+                <Text type="danger">Logout</Text>
+            </div>
+            <Divider className="my-0"/>
+          </div>
+
+        </div>
+      </div>
+
+      <div className="container-fluid px-0 fixedBottom bg-white">
+        <Divider className="my-0"/>
+          <div className="container navBar">
+            <div className="d-flex flex-row py-3">
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <HomeOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex align-items-center flex-fill align-items-center justify-content-center">
+                <HeartOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <FileAddOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+              <img src={bookmark}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <MailOutlined style={{ fontSize: '24px'}}/>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  )
+}
+
+function MyMessages(){
+  return(
+    <div>
+      <div className="container-fluid px-0 fixedTop bg-white">
+        <div className="container navBar">
+          <div className="d-flex flex-row py-2 align-items-center justify-content-between">
+            <div className="d-flex flex-row align-items-center">
+              <img src={logo} className="Applogo mr-3" alt="logo" />
+              <h2 className="my-0">Rankly</h2>
+            </div>
+            <div className="d-flex flex-row align-items-center">
+              <SearchOutlined style={{ fontSize: '24px'}} className="mr-4"/>
+              <BellOutlined style={{ fontSize: '24px'}} className="mr-4"/>
+              <div className="navAvatarImgWrap">
+                <img src={avatar} className="navAvatarImg"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <Divider className="my-0"/>
+      </div>
+
+      <div className="container myMessages">
+        <div className="row">
+        <div className="col-12 px-0">
+            <div className="d-flex flex-row detailsSecondaryCard px-3 py-3">
+              <div className="cardBodyImgWrap flex-shrink-0">
+                <Image
+                width={'100%'}
+                src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                />
+              </div>
+              <div className="d-flex flex-column ml-3">
+                <Text type="primary">Welcome to rankly, im sophy ill help you get started.</Text>
+                <span className="d-flex flex-row">
+                  <Text type="secondary" className="mr-3">Rankly 4 weeks ago</Text>
+                </span>
+              </div>
+            </div>
+            <Divider className="my-0"/>
+          </div>
+        </div>
+      </div>
+
+      <div className="container-fluid px-0 fixedBottom bg-white">
+        <Divider className="my-0"/>
+          <div className="container navBar">
+            <div className="d-flex flex-row py-3">
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <HomeOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex align-items-center flex-fill align-items-center justify-content-center">
+                <HeartOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <FileAddOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+              <img src={bookmark}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <MailOutlined style={{ fontSize: '24px'}}/>
+              </div>
+            </div>
+          </div>
+      </div>
     </div>
   )
 }

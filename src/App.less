@@ -24,6 +24,26 @@
   margin-top: 48px;
 }
 
+.myProfile{
+  margin-top: 54px;
+}
+
+.myComments{
+  margin-top: 54px;
+}
+
+.accountsettings{
+  margin-top: 54px;
+}
+
+.myMessages{
+  margin-top: 54px;
+}
+
+.bookmarkDetails{
+  margin-top: 54px;
+}
+
 .ant-tabs-tab{
   margin-right: 0px;
   display: flex;
@@ -51,6 +71,10 @@
       height: auto;
     }
   }
+}
+
+.ant-select-dropdown{
+  min-width: 200px !Important;
 }
 
 /* ============================ listfeed screen styles ============================== */
@@ -224,11 +248,203 @@
 /* ============================ end of list details screen styles ============================== */
 
 
+
+/* bookmark details */
+.bookmarkDetails{
+  .detailsSecondaryCard{
+    .cardBodyImgWrap {
+      width:48px;
+      height: 48px;
+      overflow: hidden;
+      position: relative;
+    }
+  }
+}
+
+/* end */
+
+
 /* ============================ favourtires ======================================= */ 
 .favouriteList{
   .cardBodyImgWrap{
     width:72px;
     height:72px;
     overflow: hidden;
+    position: relative;
+  }
+  .favOverlay{
+    width: 72px;
+    height: 72px;
+    position:absolute;
+    z-index: 1;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.25);
+    color:#fff;
+  }
+  
+}
+/* =========================== end of favorites UI =============================== */
+
+
+/* ====== My profile =====*/
+
+.myProfile{
+  .myProfileAvatarWrap{
+    width:48px;
+    height:48px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    .myProfileAvatar{
+      width:48px;
+      height:48px;
+      flex-shrink: 0;
+    }
+  }
+  .ant-tabs-nav{
+    margin-bottom: 0px !important;
+    width: 75%;
+    
+  }
+  
+  .myProfileMore{
+    border-bottom:1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex:1;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 25%;
+    top:0px;
+    right: 0px;
+    height: 46px;
+  }
+  .moreOptions{
+    .ant-tabs-ink-bar{
+      background-color: transparent;
+    }
+  }
+  .customSecondaryBar{
+    position: relative;
+    .ant-btn{
+      border: none !Important;
+      box-shadow: none !important;
+    }
+  }
+  .detailsSecondaryCard{
+    .cardBodyImgWrap {
+      width:72px;
+      height: 72px;
+      overflow: hidden;
+      position: relative;
+    }
+    .favOverlay{
+      width: 72px;
+      height: 72px;
+      position:absolute;
+      z-index: 1;
+      top: 0px;
+      left: 0px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(0, 0, 0, 0.25);
+      color:#fff;
+    }
+  }
+}
+
+/* my comments */
+
+.myComments{
+  .myProfileAvatarWrap{
+    width:48px;
+    height:48px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    .myProfileAvatar{
+      width:48px;
+      height:48px;
+      flex-shrink: 0;
+    }
+  }
+  .ant-tabs-nav{
+    margin-bottom: 0px !important;
+    width: 75%;
+    
+  }
+  
+  .myProfileMore{
+    border-bottom:1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex:1;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 25%;
+    top:0px;
+    right: 0px;
+    height: 46px;
+  }
+  .moreOptions{
+    .ant-tabs-ink-bar{
+      background-color: transparent;
+    }
+  }
+  .customSecondaryBar{
+    position: relative;
+    .ant-btn{
+      border: none !Important;
+      box-shadow: none !important;
+    }
+  }
+  .detailsSecondaryCard{
+    .cardBodyImgWrap {
+      width:48px;
+      height: 48px;
+      overflow: hidden;
+      position: relative;
+      border-radius: 50%;
+    }
+  }
+}
+
+
+/* Account settings */
+
+.accountsettings{
+  .myProfileAvatarWrap{
+    width:48px;
+    height:48px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    .myProfileAvatar{
+      width:48px;
+      height:48px;
+      flex-shrink: 0;
+    }
+  }
+  .settingMenu{
+    cursor: pointer;
+  }
+}
+
+
+/* myMessages */
+.myMessages{
+  .detailsSecondaryCard{
+    .cardBodyImgWrap{
+      width:48px;
+      height:48px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      overflow: hidden;
+    }
   }
 }
