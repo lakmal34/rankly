@@ -1,7 +1,7 @@
 const merge = require("webpack-merge");
 const common = require("./webpack.common.js");
 const path = require("path");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
@@ -14,6 +14,17 @@ module.exports = merge(common, {
       {
         test: /\.css$/,
         use: [{ loader: MiniCssExtractPlugin.loader }, { loader: "css-loader" }]
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+            },
+          },
+        ],
       }
     ]
   },
@@ -26,11 +37,7 @@ module.exports = merge(common, {
   plugins: [
     // Remove all files inside webpack's dist directory,
     // as well as all unused webpack assets after every successful rebuild.
-    new CleanWebpackPlugin([path.resolve(__dirname, "../dist")], {
-      root: process.cwd(),
-      verbose: true,
-      dry: false
-    }),
+    new CleanWebpackPlugin(),
     // Search for CSS assets during the Webpack build and will optimize/minimize the CSS.
     new OptimizeCssAssetsPlugin(),
     // Extracts CSS into separate files
