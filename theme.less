@@ -1,0 +1,41 @@
+// @primary-color: red;
+// @link-color: red;
+// @font-family: sans-serif;
+@import '~antd/lib/style/color/colors.less';
+@import '~antd/lib/style/color/colorPalette.less';
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+}
+@font-family: Poppins;
+
+@blue-base: #1890ff;
+@blue-1: color(~`colorPalette('@{blue-6}', 1) `);
+@blue-2: color(~`colorPalette('@{blue-6}', 2) `);
+@blue-3: color(~`colorPalette('@{blue-6}', 3) `);
+@blue-4: color(~`colorPalette('@{blue-6}', 4) `);
+@blue-5: color(~`colorPalette('@{blue-6}', 5) `);
+@blue-6: @blue-base;
+@blue-7: color(~`colorPalette('@{blue-6}', 7) `);
+@blue-8: color(~`colorPalette('@{blue-6}', 8) `);
+@blue-9: color(~`colorPalette('@{blue-6}', 9) `);
+@blue-10: color(~`colorPalette('@{blue-6}', 10) `);
+
+
+// -------- Colors -----------
+@primary-color: @blue-6;
+@info-color: @primary-color;
+@success-color: @green-6;
+@processing-color: @blue-6;
+@error-color: @red-5;
+@highlight-color: @red-5;
+@warning-color: @gold-6;
+@normal-color: #d9d9d9;
+@white: #fff;
+@black: #000;
+@light-color:#f8f8f8;
+
+
+
+
