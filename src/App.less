@@ -11,9 +11,11 @@
 }
 .listFeed{
   margin-top: 54px;
+  padding-bottom: 54px;
 }
 .listDetails{
   margin-top: 54px;
+  padding-bottom: 72px;
 }
 
 .favouriteList{
@@ -41,6 +43,14 @@
 }
 
 .bookmarkDetails{
+  margin-top: 54px;
+}
+
+.searchList{
+  margin-top: 54px;
+}
+
+.createList{
   margin-top: 54px;
 }
 
@@ -77,6 +87,20 @@
   min-width: 200px !Important;
 }
 
+.lineInput{
+  &:hover{
+    box-shadow: none !Important;
+  }
+  &:focus{
+    box-shadow: none;
+  }
+  &:active{
+    box-shadow:none;
+  }
+}
+
+
+
 /* ============================ listfeed screen styles ============================== */
 
 .listFeedCard{
@@ -88,14 +112,21 @@
       justify-content: space-between;
       flex-direction: row;
       .cardHeadLeft {
-        >.cardImg {
+        .avatarWrap{
           width: 40px;
+          height: 40px;
+          overflow: hidden;
+          border-radius: 50%;
+          .cardImg {
+            width: 100%;
+            height: auto;
+          }
         }
       }
     }
     .cardBody{
       .cardBodyImgWrap{
-        height: auto;
+        height: 200px;
         overflow: hidden;
       }
     }
@@ -175,6 +206,16 @@
     }
   }
   .detailsPrimaryCard{
+    .ant-card-body{
+      padding-left: 0px;
+      padding-right: 0px;
+      padding-top: 0px;
+      padding-bottom: 0px;
+    }
+    .cardBodyImgWrap{
+      max-height: 300px;
+      overflow: hidden;
+    }
     .cardExpert {
       display: flex;
       align-items: center;
@@ -241,6 +282,21 @@
           }
         } 
       } 
+    }
+  }
+}
+
+@media (max-width:350px) {
+  .listDetails{
+    .cardActionRight{
+      flex-grow: 1;
+      .cardActionRightInner{
+        justify-content: space-between;
+      }
+    }
+    .cardActionLeft{
+      flex-grow: 1;
+      justify-content: space-between;
     }
   }
 }
@@ -446,5 +502,29 @@
       border-radius: 50%;
       overflow: hidden;
     }
+  }
+}
+
+/* end mymessages */
+
+/* start searchresults */
+
+.searchList{
+  .detailsSecondaryCard{
+    .cardBodyImgWrap {
+      width:72px;
+      height: 72px;
+      overflow: hidden;
+    }
+  }
+}
+
+/* create list */
+.createList{
+  .createListWrap{
+    height: calc(100vh - 110px);
+  }
+  .listDescription{
+    flex:1;
   }
 }

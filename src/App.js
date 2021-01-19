@@ -8,14 +8,16 @@ import {
 import './utility.less';
 import './App.less';
 import { Breadcrumb,Button,Divider,Form,Input,Select,Upload,message,Card,Typography,Dropdown,Menu,Image,Radio,Checkbox,Tabs,Modal } from 'antd';
-import { LogoutOutlined,QuestionCircleOutlined,SafetyOutlined,LockOutlined,ToolOutlined,PlusOutlined,MoreOutlined,HeartOutlined,MessageOutlined,ShareAltOutlined,SearchOutlined,BellOutlined,HomeOutlined,FileAddOutlined,MailOutlined,UpOutlined,DownOutlined,AppstoreOutlined,UnorderedListOutlined,FilterOutlined,HeartFilled } from '@ant-design/icons';
-
+import { ArrowRightOutlined,CloseOutlined,LogoutOutlined,QuestionCircleOutlined,SafetyOutlined,LockOutlined,ToolOutlined,PlusOutlined,MoreOutlined,HeartOutlined,MessageOutlined,ShareAltOutlined,SearchOutlined,BellOutlined,HomeOutlined,FileAddOutlined,MailOutlined,UpOutlined,DownOutlined,AppstoreOutlined,UnorderedListOutlined,FilterOutlined,HeartFilled } from '@ant-design/icons';
 import logo from './assets/img/logoPlaceholder.png';
 import avatar from './assets/img/avatar.png';
 import bookmark from './assets/img/bookmark.svg';
 import facebook from './assets/img/facebook.svg';
 import google from './assets/img/google.svg';
+import users from "./users-data";
 
+const { TextArea } = Input;
+const { Search } = Input;
 const { TabPane } = Tabs;
 const { Option } = Select;
 const { Title } = Typography;
@@ -58,10 +60,17 @@ const menu = (
   </Menu>
 );
 
+
 export default function BasicExample() {
   return (
   <Router>
     <Switch>
+      <Route path="/createlist">
+        <CreateList />
+      </Route>
+      <Route path="/searchresults">
+        <SearchResults />
+      </Route>
       <Route path="/bookmarkdetails">
         <BookmarkDetails />
       </Route>
@@ -429,96 +438,24 @@ const ListFeed = () => {
               <div className="navAvatarImgWrap">
                 <img src={avatar} className="navAvatarImg"/>
               </div>
-              
             </div>
           </div>
         </div>
         <Divider className="my-0"/>
       </div>
-      <div className="container listFeed pt-4">
+      <div className="container listFeed pt-3">
         <div className="row">
-          <div className="col-12 col-lg-4 mb-3 listFeedCard">
-              <Card>
-                  <div className="cardHead">
-                    <div className="cardHeadLeft d-flex flex-row align-items-center">
-                      <img src={avatar} className="cardImg"/>
-                      <div className="d-flex flex-column ml-2">
-                        <Text type="primary">Jane Cooper</Text>
-                        <Text type="secondary">Musician | Vocalist</Text>
-                      </div>
-                    </div>
-                    <div className="cardHeadRight">
-                      <Dropdown overlay={menu} placement="bottomRight">
-                        <MoreOutlined style={{ fontSize: '24px'}} />
-                      </Dropdown>
-                    </div>
-                  </div>
-                  <Link to="/ListDetails">
-                    <div className="cardBody pt-3">
-                      <Text type="primary" strong>The best wireless headphones you can buy in 2020 so far</Text>
-                      <div className="cardBodyImgWrap mt-2">
-                        <Image
-                          width={'100%'}
-                          src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-                          preview={
-                            false
-                          }
-                        />
-                      </div>
-                    </div>
-                  </Link>
-                  <div className="cardExpert py-2">
-                    <div className="cardExpertLeft">
-                      <div className="facepile">
-                        <div className="cardImgWrap">
-                          <img src="https://tinyurl.com/y44o75ox" className="cardImg"/>
-                        </div>
-                        <div className="cardImgWrap">
-                          <img src="https://tinyurl.com/y6oe9zfe" className="cardImg"/>
-                        </div>
-                        <div className="cardImgWrap">
-                          <img src="https://tinyurl.com/yyktos3r" className="cardImg"/>
-                        </div>
-                        <div className="cardImgWrap">
-                          <img src="https://tinyurl.com/y4fr59zm" className="cardImg"/>
-                        </div>
-                        <div className="cardImgWrap">
-                          <span>+7</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="cardExpertRight">
-                      <Text type="secondary">3 days ago</Text>
-                    </div>
-                  </div>
-                  <div className="cardAction pt-2">
-                    <div className="cardActionLeft">
-                      <span className="d-flex flex-row align-items-center justify-content-center mr-4">
-                        <HeartOutlined style={{ fontSize: '24px'}}/>
-                        <Text className="ml-2">12</Text>
-                      </span>
-                      <span className="d-flex flex-row align-items-center justify-content-center mr-4">
-                        <MessageOutlined  style={{ fontSize: '24px'}}/>
-                        <Text className="ml-2">12</Text>
-                      </span>
-                      <span className="d-flex flex-row align-items-center justify-content-center">
-                        <ShareAltOutlined style={{ fontSize: '24px'}}/>
-                      </span>
-                    </div>
-                    <div className="cardActionRight" onClick={showModal}>
-                      <img src={bookmark}/>
-                    </div>
-                  </div>
-                </Card>
-          </div>
-          <div className="col-12 col-lg-4 mb-3 listFeedCard">
+        {users.map((user, index) => (
+            <div key={index} className="col-12 col-lg-4 mb-3 listFeedCard">
               <Card>
                 <div className="cardHead">
                   <div className="cardHeadLeft d-flex flex-row align-items-center">
-                    <img src={avatar} className="cardImg"/>
+                    <div className="avatarWrap">
+                      <img src={user.avatarImg} className="cardImg"/>
+                    </div>
                     <div className="d-flex flex-column ml-2">
-                      <Text type="primary">Jane Cooper</Text>
-                      <Text type="secondary">Musician | Vocalist</Text>
+                      <Text type="primary">{user.name}</Text>
+                      <Text type="secondary">{user.bio}</Text>
                     </div>
                   </div>
                   <div className="cardHeadRight">
@@ -529,11 +466,11 @@ const ListFeed = () => {
                 </div>
                 <Link to="/ListDetails">
                     <div className="cardBody pt-3">
-                      <Text type="primary" strong>The best wireless headphones you can buy in 2020 so far</Text>
+                      <Text type="primary" strong>{user.title}</Text>
                       <div className="cardBodyImgWrap mt-2">
                         <Image
                           width={'100%'}
-                          src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                          src={user.imgURL}
                           preview={
                             false
                           }
@@ -585,80 +522,7 @@ const ListFeed = () => {
                 </div>
               </Card>
           </div>
-          <div className="col-12 col-lg-4 mb-3 listFeedCard">
-              <Card>
-                  <div className="cardHead">
-                    <div className="cardHeadLeft d-flex flex-row align-items-center">
-                      <img src={avatar} className="cardImg"/>
-                      <div className="d-flex flex-column ml-2">
-                        <Text type="primary">Jane Cooper</Text>
-                        <Text type="secondary">Musician | Vocalist</Text>
-                      </div>
-                    </div>
-                    <div className="cardHeadRight">
-                      <Dropdown overlay={menu} placement="bottomRight">
-                        <MoreOutlined style={{ fontSize: '24px'}} />
-                      </Dropdown>
-                    </div>
-                  </div>
-                  <Link to="/ListDetails">
-                    <div className="cardBody pt-3">
-                      <Text type="primary" strong>The best wireless headphones you can buy in 2020 so far</Text>
-                      <div className="cardBodyImgWrap mt-2">
-                        <Image
-                          width={'100%'}
-                          src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-                          preview={
-                            false
-                          }
-                        />
-                      </div>
-                    </div>
-                  </Link>
-                  <div className="cardExpert py-2">
-                    <div className="cardExpertLeft">
-                      <div className="facepile">
-                        <div className="cardImgWrap">
-                          <img src="https://tinyurl.com/y44o75ox" className="cardImg"/>
-                        </div>
-                        <div className="cardImgWrap">
-                          <img src="https://tinyurl.com/y6oe9zfe" className="cardImg"/>
-                        </div>
-                        <div className="cardImgWrap">
-                          <img src="https://tinyurl.com/yyktos3r" className="cardImg"/>
-                        </div>
-                        <div className="cardImgWrap">
-                          <img src="https://tinyurl.com/y4fr59zm" className="cardImg"/>
-                        </div>
-                        <div className="cardImgWrap">
-                          <span>+7</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="cardExpertRight">
-                      <Text type="secondary">3 days ago</Text>
-                    </div>
-                  </div>
-                  <div className="cardAction pt-2">
-                    <div className="cardActionLeft">
-                      <span className="d-flex flex-row align-items-center justify-content-center mr-4">
-                        <HeartOutlined style={{ fontSize: '24px'}}/>
-                        <Text className="ml-2">12</Text>
-                      </span>
-                      <span className="d-flex flex-row align-items-center justify-content-center mr-4">
-                        <MessageOutlined  style={{ fontSize: '24px'}}/>
-                        <Text className="ml-2">12</Text>
-                      </span>
-                      <span className="d-flex flex-row align-items-center justify-content-center">
-                        <ShareAltOutlined style={{ fontSize: '24px'}}/>
-                      </span>
-                    </div>
-                    <div className="cardActionRight" onClick={showModal}>
-                      <img src={bookmark}/>
-                    </div>
-                  </div>
-                </Card>
-          </div>
+          ))}
         </div>
       </div>
       <div className="container-fluid px-0 fixedBottom bg-white">
@@ -749,7 +613,7 @@ const ListDetails = () =>{
         </div>
         <Divider className="my-0"/>
       </div>
-      <div className="container listDetails pt-4 pb-5">
+      <div className="container listDetails pt-4">
         <div className="row">
           <div className="col-12">
             <div className="detailsHead">
@@ -759,9 +623,9 @@ const ListDetails = () =>{
                 </div>
                 <div className="d-flex flex-column ml-2">
                   <Title level={4} className="mb-0">The best wireless headphones you can buy in 2020 so far</Title>
-                  <span className="d-flex flex-row">
-                    <Text type="link" className="mr-3">Jane Cooper</Text>
-                    <Text type="secondary">Expert Musician | Vocalist</Text>
+                  <span className="d-flex flex-row flex-wrap">
+                    <Text type="link" className="mr-3 flex-shrink-0">Jane Cooper</Text>
+                    <Text type="secondary" className="flex-shrink-0">Expert Musician | Vocalist</Text>
                   </span>
                 </div>
               </div>
@@ -779,12 +643,12 @@ const ListDetails = () =>{
             </div>
           </div>
           <div className="col-12 col-lg-7 col-md-7 mt-4">
-            <Card className="detailsPrimaryCard">
+            <Card className="detailsPrimaryCard border-0">
               <div className="d-flex flex-row justify-content-between">
                 <Title level={5}>#1. Sony WH-1000XM4</Title>
                 <MoreOutlined style={{ fontSize: '24px'}} />
               </div>
-              <div className="cardBody">
+              <div className="cardBody px-0 py-0">
                 <div className="cardBodyImgWrap mt-2">
                   <Image
                   width={'100%'}
@@ -819,9 +683,9 @@ const ListDetails = () =>{
                   <Button>Order Now</Button>
                 </div>
               </div>
-              <div className="cardAction pt-2">
-              <div className="cardActionRight">
-                  <div className="d-flex flex-row align-items-center">
+              <div className="cardAction flex-wrap">
+                <div className="cardActionRight pt-2">
+                  <div className="d-flex flex-row align-items-center cardActionRightInner">
                     <Button type="primary" icon={<UpOutlined />} />
                     <span className="px-3">
                       <Text type="primary">#</Text>
@@ -829,7 +693,7 @@ const ListDetails = () =>{
                     <Button type="primary" icon={<DownOutlined />} />
                   </div>
                 </div>
-                <div className="cardActionLeft">
+                <div className="cardActionLeft pt-2">
                   <span className="d-flex flex-row align-items-center justify-content-center mr-3">
                     <HeartOutlined style={{ fontSize: '24px'}}/>
                     <Text className="ml-2">12</Text>
@@ -845,7 +709,6 @@ const ListDetails = () =>{
                     <img src={bookmark}/>
                   </span>
                 </div>
-                
               </div>
             </Card>
           </div>
@@ -1735,6 +1598,196 @@ function MyMessages(){
               </div>
             </div>
             <Divider className="my-0"/>
+          </div>
+        </div>
+      </div>
+
+      <div className="container-fluid px-0 fixedBottom bg-white">
+        <Divider className="my-0"/>
+          <div className="container navBar">
+            <div className="d-flex flex-row py-3">
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <HomeOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex align-items-center flex-fill align-items-center justify-content-center">
+                <HeartOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <FileAddOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+              <img src={bookmark}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <MailOutlined style={{ fontSize: '24px'}}/>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  )
+}
+
+function SearchResults(){
+  return(
+    <div>
+      <div className="container-fluid px-0 fixedTop bg-white">
+        <div className="container navBar">
+          <div className="d-flex flex-row py-2 align-items-center justify-content-between">
+            <Search placeholder="input search text" />
+            <div style={{width:'32px', height:'32px', display:'flex', alignItems:'center', justifyContent:'center'}}>
+            <CloseOutlined style={{fontSize:"18px"}}/>
+            </div>
+          </div>
+        </div>
+        <Divider className="my-0"/>
+      </div>
+      <div className="container searchList">
+      <div className="row">
+          <div className="col-12 px-0">
+          <Tabs defaultActiveKey="1">
+            <TabPane tab="Lists" key="1">
+              <div className="col-12 px-0">
+                <div className="d-flex flex-row detailsSecondaryCard mb-2 px-3 py-2">
+                  <div className="cardBodyImgWrap flex-shrink-0">
+                    <Image
+                    width={'100%'}
+                    src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                    />
+                  </div>
+                  <div className="d-flex flex-column ml-2">
+                    <Text type="primary" strong>The best wireless headphones you can buy in 2020</Text>
+                    <span className="d-flex flex-row">
+                      <Text type="secondary" className="mr-3">Jane Cooper</Text>
+                      <Text type="secondary">8 month ago</Text>
+                    </span>
+                  </div>
+                </div>
+                <Divider className="my-0"/>
+              </div>
+            </TabPane>
+            <TabPane tab="Items" key="2">
+              <div className="col-12 px-0">
+                <div className="d-flex flex-row detailsSecondaryCard mb-2 px-3 py-2">
+                  <div className="cardBodyImgWrap flex-shrink-0">
+                    <Image
+                    width={'100%'}
+                    src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                    />
+                    <div className="favOverlay">
+                      <HeartFilled style={{fontSize:"24px",}}/>
+                    </div>
+                  </div>
+                  <div className="d-flex flex-column ml-2">
+                    <Text type="primary" strong>Sony WH-1000XM4</Text>
+                    <Link>The best wireless headphones you can buy in 2020</Link>
+                    <span className="d-flex flex-row">
+                      <Text type="secondary" className="mr-3">Jane Cooper</Text>
+                      <Text type="secondary">8 month ago</Text>
+                    </span>
+                  </div>
+                </div>
+                <Divider className="my-0"/>
+              </div>
+            </TabPane>
+            <TabPane tab="People" key="3">
+            <div className="col-12 px-0">
+            <div className="d-flex flex-row detailsSecondaryCard px-3 py-2">
+              <div className="cardBodyImgWrap flex-shrink-0">
+                <Image
+                width={'100%'}
+                src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                />
+              </div>
+              <div className="d-flex flex-column ml-3">
+                <Text type="primary">Boy Pablo</Text>
+                <span className="d-flex flex-row">
+                  <Text type="secondary" className="mr-3">Nostalgic indie-pop</Text>
+                </span>
+              </div>
+            </div>
+            <Divider className="my-0"/>
+          </div>
+            </TabPane>
+          </Tabs>
+          </div>
+        </div>
+      </div>
+      <div className="container-fluid px-0 fixedBottom bg-white">
+        <Divider className="my-0"/>
+          <div className="container navBar">
+            <div className="d-flex flex-row py-3">
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <HomeOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex align-items-center flex-fill align-items-center justify-content-center">
+                <HeartOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <FileAddOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+              <img src={bookmark}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <MailOutlined style={{ fontSize: '24px'}}/>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  )
+}
+
+function CreateList(){
+  return(
+    <div>
+      <div className="container-fluid px-0 fixedTop bg-white">
+        <div className="container navBar">
+          <div className="d-flex flex-row py-2 align-items-center justify-content-between">
+            <div className="d-flex flex-row align-items-center">
+              <img src={logo} className="Applogo mr-3" alt="logo" />
+              <h2 className="my-0">Rankly</h2>
+            </div>
+            <div className="d-flex flex-row align-items-center">
+              <SearchOutlined style={{ fontSize: '24px'}} className="mr-4"/>
+              <BellOutlined style={{ fontSize: '24px'}} className="mr-4"/>
+              <div className="navAvatarImgWrap">
+                <img src={avatar} className="navAvatarImg"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <Divider className="my-0"/>
+      </div>
+
+      <div className="container createList">
+        <div className="row">
+          <div className="d-flex flex-column createListWrap col-12 px-0">
+            <div>
+              <div className="col-12 py-3">
+                <div className="d-flex flex-row align-items-center justify-content-between">
+                  <Title level={5}>Create Lists</Title>
+                  <Button type="primary">Primary Button <ArrowRightOutlined className="ml-3"/></Button>
+                </div>
+              </div>
+              <div className="col-12 px-0 px-sm-0 px-md-0 px-lg-2">
+                <Dragger {...props} className="py-4">
+                  <p className="ant-upload-drag-icon mb-2">
+                    <PlusOutlined style={{ fontSize: '18px'}} />
+                  </p>
+                  <p className="ant-upload-hint">Upload</p>
+                </Dragger>
+              </div>
+              <div className="col-12 px-sm-0">
+                <Input placeholder="List name" className="border-left-0  border-right-0 border-top-0 lineInput" style={{borderRadius:'0px'}}/>
+              </div>
+            </div>
+            <div className="listDescription">
+              <div className="col-12 px-sm-0" style={{height:"100%"}}>
+                <TextArea style={{height:"100%"}} className="border-left-0  border-right-0 border-top-0 lineInput" placeholder="List details" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
