@@ -8,7 +8,7 @@ import {
 import './utility.less';
 import './App.less';
 import { Breadcrumb,Button,Divider,Form,Input,Select,Upload,message,Card,Typography,Dropdown,Menu,Image,Radio,Checkbox,Tabs,Modal } from 'antd';
-import { ArrowRightOutlined,CloseOutlined,LogoutOutlined,QuestionCircleOutlined,SafetyOutlined,LockOutlined,ToolOutlined,PlusOutlined,MoreOutlined,HeartOutlined,MessageOutlined,ShareAltOutlined,SearchOutlined,BellOutlined,HomeOutlined,FileAddOutlined,MailOutlined,UpOutlined,DownOutlined,AppstoreOutlined,UnorderedListOutlined,FilterOutlined,HeartFilled } from '@ant-design/icons';
+import { DeleteOutlined,CheckOutlined,UploadOutlined,ArrowLeftOutlined,EditOutlined,ArrowRightOutlined,CloseOutlined,LogoutOutlined,QuestionCircleOutlined,SafetyOutlined,LockOutlined,ToolOutlined,PlusOutlined,MoreOutlined,HeartOutlined,MessageOutlined,ShareAltOutlined,SearchOutlined,BellOutlined,HomeOutlined,FileAddOutlined,MailOutlined,UpOutlined,DownOutlined,AppstoreOutlined,UnorderedListOutlined,FilterOutlined,HeartFilled } from '@ant-design/icons';
 import logo from './assets/img/logoPlaceholder.png';
 import avatar from './assets/img/avatar.png';
 import bookmark from './assets/img/bookmark.svg';
@@ -65,6 +65,21 @@ export default function BasicExample() {
   return (
   <Router>
     <Switch>
+      <Route path="/squadrequest">
+        <SquadRequest />
+      </Route>
+      <Route path="/notifications">
+        <Notifications />
+      </Route>
+      <Route path="/listcreated">
+        <ListCreated />
+      </Route>
+      <Route path="/createlistitem">
+        <CreateListItem />
+      </Route>
+      <Route path="/listinitial">
+        <ListInitial />
+      </Route>
       <Route path="/createlist">
         <CreateList />
       </Route>
@@ -1776,7 +1791,7 @@ function CreateList(){
                   <p className="ant-upload-drag-icon mb-2">
                     <PlusOutlined style={{ fontSize: '18px'}} />
                   </p>
-                  <p className="ant-upload-hint">Upload</p>
+                  <p className="ant-upload-hint">Click or drag file to this area to upload</p>
                 </Dragger>
               </div>
               <div className="col-12 px-sm-0">
@@ -1792,6 +1807,412 @@ function CreateList(){
         </div>
       </div>
 
+      <div className="container-fluid px-0 fixedBottom bg-white">
+        <Divider className="my-0"/>
+          <div className="container navBar">
+            <div className="d-flex flex-row py-3">
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <HomeOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex align-items-center flex-fill align-items-center justify-content-center">
+                <HeartOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <FileAddOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+              <img src={bookmark}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <MailOutlined style={{ fontSize: '24px'}}/>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  )
+}
+
+function ListInitial() {
+  return(
+    <div>
+      <div className="container-fluid px-0 fixedTop bg-white">
+        <div className="container navBar">
+          <div className="d-flex flex-row py-2 align-items-center justify-content-between">
+            <div className="d-flex flex-row align-items-center">
+              <img src={logo} className="Applogo mr-3" alt="logo" />
+              <h2 className="my-0">Rankly</h2>
+            </div>
+            <div className="d-flex flex-row align-items-center">
+              <SearchOutlined style={{ fontSize: '24px'}} className="mr-4"/>
+              <BellOutlined style={{ fontSize: '24px'}} className="mr-4"/>
+              <div className="navAvatarImgWrap">
+                <img src={avatar} className="navAvatarImg"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <Divider className="my-0"/>
+      </div>
+
+      <div className="container listInitial">
+        <div className="row">
+          <div className="col-12 px-0">
+              <div className="d-flex flex-row detailsSecondaryCard mb-2 px-3 py-3 justify-content-between">
+                <div className="d-flex flex-row">
+                  <div className="cardBodyImgWrap flex-shrink-0">
+                    <Image
+                    width={'100%'}
+                    src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                    />
+                    <div className="favOverlay">
+                      <EditOutlined style={{fontSize:"24px",}}/>
+                    </div>
+                  </div>
+                  <div className="d-flex flex-column ml-2">
+                    <Text type="primary" strong>The best wireless headphones you can buy in 2020</Text>
+                    <span className="d-flex flex-row">
+                      <Text type="secondary" className="mr-3">Jane Cooper</Text>
+                      <Text type="secondary">8 month ago</Text>
+                    </span>
+                  </div>
+                </div>
+                <div>
+                  <MoreOutlined />
+                </div>
+              </div>
+          </div>
+          <div className="col-12">
+            <Button icon={<PlusOutlined />} className="w-100">Add a list item</Button>
+          </div>
+        </div>
+      </div>
+
+      <div className="container-fluid px-0 fixedBottom bg-white">
+        <Divider className="my-0"/>
+          <div className="container navBar">
+            <div className="d-flex flex-row py-3">
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <HomeOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex align-items-center flex-fill align-items-center justify-content-center">
+                <HeartOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <FileAddOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+              <img src={bookmark}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <MailOutlined style={{ fontSize: '24px'}}/>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  )
+}
+
+function CreateListItem() {
+  return(
+    <div>
+      <div className="container-fluid px-0 fixedTop bg-white">
+        <div className="container navBar py-2">
+          <div className="d-flex flex-row py-2 align-items-center justify-content-between">
+            <div className="d-flex flex-row align-items-center">
+              <ArrowLeftOutlined style={{ fontSize: '24px'}}/>
+            </div>
+            <div className="d-flex flex-row align-items-center">
+              <UploadOutlined style={{ fontSize: '24px'}} className="mr-5"/>
+              <CheckOutlined style={{ fontSize: '24px'}} className="mr-5"/>
+              <DeleteOutlined style={{ fontSize: '24px'}} className="mr-5"/>
+              <BellOutlined style={{ fontSize: '24px'}} className="mr-5"/>
+            </div>
+          </div>
+        </div>
+        <Divider className="my-0"/>
+      </div>
+      <div className="container-fluid createListItem">
+        <div className="row">
+          <div className="col-12 px-0 createListItemWrap d-flex flex-column">
+            <div>
+              <div className="col-12 px-sm-0">
+                <Input placeholder="Item name" className="border-left-0  border-right-0 border-top-0 lineInput" style={{borderRadius:'0px', height:'48px'}}/>
+              </div>
+              <div className="col-12 px-sm-0">
+                <Input placeholder="Add URL" className="border-left-0  border-right-0 border-top-0 lineInput" style={{borderRadius:'0px', height:'48px'}}/>
+              </div>
+              <div className="col-12 px-sm-0 inputLG border-x-0">
+                <Select defaultValue="No Button" style={{ width: '100%', height:'48px' }} className="border-left-0 border-right-0">
+                  <Option value="jack">Apply Now</Option>
+                  <Option value="lucy">Book Now</Option>
+                </Select>
+              </div>
+            </div>
+            <div className="listDescription">
+              <div className="col-12 px-sm-0" style={{height:"100%"}}>
+                <TextArea style={{height:"100%"}} className="border-left-0  border-right-0 border-top-0 lineInput" placeholder="List details" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function ListCreated() {
+  return(
+    <div>
+      <div className="container-fluid px-0 fixedTop bg-white">
+        <div className="container navBar">
+          <div className="d-flex flex-row py-2 align-items-center justify-content-between">
+            <div className="d-flex flex-row align-items-center">
+              <img src={logo} className="Applogo mr-3" alt="logo" />
+              <h2 className="my-0">Rankly</h2>
+            </div>
+            <div className="d-flex flex-row align-items-center">
+              <SearchOutlined style={{ fontSize: '24px'}} className="mr-4"/>
+              <BellOutlined style={{ fontSize: '24px'}} className="mr-4"/>
+              <div className="navAvatarImgWrap">
+                <img src={avatar} className="navAvatarImg"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <Divider className="my-0"/>
+      </div>
+
+      <div className="container listInitial">
+        <div className="row">
+          <div className="col-12 px-0">
+              <div className="d-flex flex-row detailsSecondaryCard px-3 py-3 justify-content-between">
+                <div className="d-flex flex-row">
+                  <div className="cardBodyImgWrap flex-shrink-0">
+                    <Image
+                    width={'100%'}
+                    src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                    />
+                    <div className="favOverlay">
+                      <EditOutlined style={{fontSize:"24px",}}/>
+                    </div>
+                  </div>
+                  <div className="d-flex flex-column ml-2">
+                    <Text type="primary" strong>The best wireless headphones you can buy in 2020</Text>
+                    <span className="d-flex flex-row">
+                      <Text type="secondary" className="mr-3">Jane Cooper</Text>
+                      <Text type="secondary">8 month ago</Text>
+                    </span>
+                  </div>
+                </div>
+                <div>
+                  <MoreOutlined />
+                </div>
+              </div>
+              <Divider className="my-0"/>
+          </div>
+          <div className="col-12 px-0">
+              <div className="d-flex flex-row detailsSecondaryCard px-3 py-3 justify-content-between">
+                <div className="d-flex flex-row">
+                  <div className="cardBodyImgWrap flex-shrink-0">
+                    <Image
+                    width={'100%'}
+                    src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                    />
+                  </div>
+                  <div className="d-flex flex-column ml-2">
+                    <Text type="primary" strong>The best wireless headphones you can buy in 2020</Text>
+                    <span className="d-flex flex-row">
+                      <Text type="secondary" className="mr-3">Jane Cooper</Text>
+                      <Text type="secondary">8 month ago</Text>
+                    </span>
+                  </div>
+                </div>
+                <div>
+                  <MoreOutlined />
+                </div>
+              </div>
+              <Divider className="my-0"/>
+          </div>
+        </div>
+      </div>
+
+      <div className="container-fluid px-0 fixedBottom bg-white">
+        <Divider className="my-0"/>
+          <div className="container navBar">
+            <div className="d-flex flex-row py-3">
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <HomeOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex align-items-center flex-fill align-items-center justify-content-center">
+                <HeartOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <FileAddOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+              <img src={bookmark}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <MailOutlined style={{ fontSize: '24px'}}/>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  )
+}
+
+function Notifications() {
+  return(
+    <div>
+      <div className="container-fluid px-0 fixedTop bg-white">
+        <div className="container navBar">
+          <div className="d-flex flex-row py-2 align-items-center justify-content-between">
+            <div className="d-flex flex-row align-items-center">
+              <img src={logo} className="Applogo mr-3" alt="logo" />
+              <h2 className="my-0">Rankly</h2>
+            </div>
+            <div className="d-flex flex-row align-items-center">
+              <SearchOutlined style={{ fontSize: '24px'}} className="mr-4"/>
+              <BellOutlined style={{ fontSize: '24px'}} className="mr-4"/>
+              <div className="navAvatarImgWrap">
+                <img src={avatar} className="navAvatarImg"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <Divider className="my-0"/>
+      </div>
+      <div className="container notifications">
+        <div className="row">
+          <div className="col-12 px-0">
+            <div className="d-flex flex-row detailsSecondaryCard px-3 py-3">
+              <div className="cardBodyImgWrap flex-shrink-0">
+                <Image
+                width={'100%'}
+                src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                />
+              </div>
+              <div className="d-flex flex-column ml-3">
+                <Text type="primary">Robert Murphy requested you to join the squad Musicians.</Text>
+                <span className="d-flex flex-row">
+                  <Text type="secondary" className="mr-3">1 hour ago</Text>
+                </span>
+                <div className="d-flex flex-row mt-2">
+                  <Button type="primary" className="mr-2">View Squad</Button>
+                  <Button>Ignore</Button>
+                </div>
+              </div>
+            </div>
+            <Divider className="my-0"/>
+          </div>
+          <div className="col-12 px-0">
+            <div className="d-flex flex-row detailsSecondaryCard px-3 py-3">
+              <div className="cardBodyImgWrap flex-shrink-0">
+                <Image
+                width={'100%'}
+                src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                />
+              </div>
+              <div className="d-flex flex-column ml-3">
+                <Text type="primary">Robert Murphy requested you to review his list Best headphones 2020.</Text>
+                <span className="d-flex flex-row">
+                  <Text type="secondary" className="mr-3">1 hour ago</Text>
+                </span>
+                <div className="d-flex flex-row mt-2">
+                  <Button type="primary" className="mr-2">Accept</Button>
+                  <Button>Reject</Button>
+                </div>
+              </div>
+            </div>
+            <Divider className="my-0"/>
+          </div>
+        </div>
+      </div>
+      <div className="container-fluid px-0 fixedBottom bg-white">
+        <Divider className="my-0"/>
+          <div className="container navBar">
+            <div className="d-flex flex-row py-3">
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <HomeOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex align-items-center flex-fill align-items-center justify-content-center">
+                <HeartOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <FileAddOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+              <img src={bookmark}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <MailOutlined style={{ fontSize: '24px'}}/>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  )
+}
+
+function SquadRequest() {
+  return(
+    <div>
+      <div className="container-fluid px-0 fixedTop bg-white">
+        <div className="container navBar">
+          <div className="d-flex flex-row py-2 align-items-center justify-content-between">
+            <div className="d-flex flex-row align-items-center">
+              <img src={logo} className="Applogo mr-3" alt="logo" />
+              <h2 className="my-0">Rankly</h2>
+            </div>
+            <div className="d-flex flex-row align-items-center">
+              <SearchOutlined style={{ fontSize: '24px'}} className="mr-4"/>
+              <BellOutlined style={{ fontSize: '24px'}} className="mr-4"/>
+              <div className="navAvatarImgWrap">
+                <img src={avatar} className="navAvatarImg"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <Divider className="my-0"/>
+      </div>
+      <div className="container notifications">
+        <div className="row">
+          <div className="col-12 px-0">
+            <div className="d-flex flex-column px-3 py-3">
+              <Title level={5}>Robert’s Muscians Squad</Title>
+              <div className="d-flex flex-row mt-2">
+                  <Button type="primary" className="mr-2">Accept</Button>
+                  <Button>Reject</Button>
+                </div>
+            </div>
+          </div>
+          <div className="col-12 px-0">
+            <div className="d-flex flex-row detailsSecondaryCard px-3 py-3 justify-content-between">
+              <div className="d-flex flex-row">
+                <div className="cardBodyImgWrap flex-shrink-0">
+                  <Image
+                  width={'100%'}
+                  src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                  />
+                </div>
+                <div className="d-flex flex-column ml-3">
+                  <Text type="primary">Robert Murphy</Text>
+                  <span className="d-flex flex-row">
+                    <Text type="secondary" className="mr-3">Expert Musician</Text>
+                  </span>
+                </div>
+              </div>
+              <div>
+                <MoreOutlined />
+              </div>
+            </div>
+            <Divider className="my-0"/>
+          </div>
+        </div>
+      </div>
       <div className="container-fluid px-0 fixedBottom bg-white">
         <Divider className="my-0"/>
           <div className="container navBar">

@@ -54,6 +54,17 @@
   margin-top: 54px;
 }
 
+.listInitial{
+  margin-top: 54px;
+  padding-bottom: 54px;
+}
+.createListItem{
+  margin-top: 54px;
+}
+.notifications{
+  margin-top: 54px;
+}
+
 .ant-tabs-tab{
   margin-right: 0px;
   display: flex;
@@ -213,7 +224,7 @@
       padding-bottom: 0px;
     }
     .cardBodyImgWrap{
-      max-height: 300px;
+      height: initial;
       overflow: hidden;
     }
     .cardExpert {
@@ -269,21 +280,21 @@
   }
 }
 
-@media (min-width: 768px) {
-  .listDetails{
-    .detailsPrimaryCard{
-      .cardExpert{
-        .cardExpertLeft{
-          .facepile{
-            .cardImgWrap {
-              width: 32px;
-              height: 32px;
-            }
-          }
-        } 
-      } 
+@media (max-width: 576px){
+  .detailsHeadLeft{
+    h4{
+      font-size: 16px;
     }
   }
+  .listDetails{
+    .detailsPrimaryCard{
+      .cardBodyImgWrap{
+        max-height: 300px;
+        overflow: hidden;
+      }
+    }
+  }
+  
 }
 
 @media (max-width:350px) {
@@ -526,5 +537,69 @@
   }
   .listDescription{
     flex:1;
+  }
+}
+
+/* list initial */
+
+.listInitial{
+  .cardBodyImgWrap{
+    width:72px;
+    height:72px;
+    overflow: hidden;
+    position: relative;
+  }
+  .favOverlay{
+    width: 72px;
+    height: 72px;
+    position:absolute;
+    z-index: 1;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.25);
+    color:#fff;
+  }
+}
+
+/* */
+
+.createListItem{
+  .inputLG{
+    .ant-select-selector{
+      height: 48px;
+      display: flex;
+      align-items: center;
+    }
+  }
+  .border-x-0{
+    .ant-select-selector{
+      border-top: 0px;
+      border-left:0px;
+      border-right:0px;
+    }
+  }
+  .createListItemWrap{
+    height: calc(100vh - 58px);
+  }
+  .listDescription{
+    flex:1;
+  }
+}
+
+
+/**/
+
+.notifications{
+  .detailsSecondaryCard{
+    .cardBodyImgWrap {
+      width:48px;
+      height: 48px;
+      overflow: hidden;
+      position: relative;
+      border-radius: 50%;
+    }
   }
 }
