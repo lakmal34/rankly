@@ -8,7 +8,7 @@ import {
 import './utility.less';
 import './App.less';
 import { Breadcrumb,Button,Divider,Form,Input,Select,Upload,message,Card,Typography,Dropdown,Menu,Image,Radio,Checkbox,Tabs,Modal } from 'antd';
-import { SendOutlined,DeleteOutlined,CheckOutlined,UploadOutlined,ArrowLeftOutlined,EditOutlined,ArrowRightOutlined,CloseOutlined,LogoutOutlined,QuestionCircleOutlined,SafetyOutlined,LockOutlined,ToolOutlined,PlusOutlined,MoreOutlined,HeartOutlined,MessageOutlined,ShareAltOutlined,SearchOutlined,BellOutlined,HomeOutlined,FileAddOutlined,MailOutlined,UpOutlined,DownOutlined,AppstoreOutlined,UnorderedListOutlined,FilterOutlined,HeartFilled } from '@ant-design/icons';
+import { CopyOutlined,SendOutlined,DeleteOutlined,CheckOutlined,UploadOutlined,ArrowLeftOutlined,EditOutlined,ArrowRightOutlined,CloseOutlined,LogoutOutlined,QuestionCircleOutlined,SafetyOutlined,LockOutlined,ToolOutlined,PlusOutlined,MoreOutlined,HeartOutlined,MessageOutlined,ShareAltOutlined,SearchOutlined,BellOutlined,HomeOutlined,FileAddOutlined,MailOutlined,UpOutlined,DownOutlined,AppstoreOutlined,UnorderedListOutlined,FilterOutlined,HeartFilled } from '@ant-design/icons';
 import logo from './assets/img/logoPlaceholder.png';
 import avatar from './assets/img/avatar.png';
 import bookmark from './assets/img/bookmark.svg';
@@ -659,11 +659,12 @@ const ListFeed = () => {
           </div>
           <Search placeholder="input search text" enterButton />
         </div>
-        <div className="mb-3">
-          <div className="mb-2">
+        <div className="mb-2">
             <b>Share URL</b>
           </div>
-          <Search placeholder="input search text" enterButton />
+        <div className="mb-3 d-flex flex-row">
+            <Input placeholder="input search text" className="rounded-top-right-0 rounded-bottom-right-0"/>
+            <Button type="primary" className="rounded-0"><CopyOutlined /></Button>
         </div>
       </Modal>
     </div>
