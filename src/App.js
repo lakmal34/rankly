@@ -7,8 +7,8 @@ import {
 } from "react-router-dom";
 import './utility.less';
 import './App.less';
-import { Breadcrumb,Button,Divider,Form,Input,Select,Upload,message,Card,Typography,Dropdown,Menu,Image,Radio,Checkbox,Tabs,Modal } from 'antd';
-import { CopyOutlined,SendOutlined,DeleteOutlined,CheckOutlined,UploadOutlined,ArrowLeftOutlined,EditOutlined,ArrowRightOutlined,CloseOutlined,LogoutOutlined,QuestionCircleOutlined,SafetyOutlined,LockOutlined,ToolOutlined,PlusOutlined,MoreOutlined,HeartOutlined,MessageOutlined,ShareAltOutlined,SearchOutlined,BellOutlined,HomeOutlined,FileAddOutlined,MailOutlined,UpOutlined,DownOutlined,AppstoreOutlined,UnorderedListOutlined,FilterOutlined,HeartFilled } from '@ant-design/icons';
+import { Mentions,Breadcrumb,Button,Divider,Form,Input,Select,Upload,message,Card,Typography,Dropdown,Menu,Image,Radio,Checkbox,Tabs,Modal } from 'antd';
+import { CaretDownOutlined,CaretUpOutlined,CopyOutlined,SendOutlined,DeleteOutlined,CheckOutlined,UploadOutlined,ArrowLeftOutlined,EditOutlined,ArrowRightOutlined,CloseOutlined,LogoutOutlined,QuestionCircleOutlined,SafetyOutlined,LockOutlined,ToolOutlined,PlusOutlined,MoreOutlined,HeartOutlined,MessageOutlined,ShareAltOutlined,SearchOutlined,BellOutlined,HomeOutlined,FileAddOutlined,MailOutlined,UpOutlined,DownOutlined,AppstoreOutlined,UnorderedListOutlined,FilterOutlined,HeartFilled } from '@ant-design/icons';
 import logo from './assets/img/logoPlaceholder.png';
 import avatar from './assets/img/avatar.png';
 import bookmark from './assets/img/bookmark.svg';
@@ -456,6 +456,8 @@ const ListFeed = () => {
     </Menu>
   );
 
+  const [open, setOpen] = React.useState(false);
+
   return(
     <div>
       <div className="container-fluid px-0 fixedTop bg-white">
@@ -477,8 +479,9 @@ const ListFeed = () => {
         <Divider className="my-0"/>
       </div>
       <div className="container listFeed pt-3">
+        
         <div className="row">
-        {users.map((user, index) => (
+          {users.map((user, index) => (
             <div key={index} className="col-12 col-lg-4 mb-3 listFeedCard">
               <Card>
                 <div className="cardHead">
@@ -540,9 +543,9 @@ const ListFeed = () => {
                     <span className="d-flex flex-row align-items-center justify-content-center mr-4">
                       <HeartOutlined style={{ fontSize: '24px'}}/>
                       <Text className="ml-2">12</Text>
-                    </span>
+                    </span>   
                     <span className="d-flex flex-row align-items-center justify-content-center mr-4">
-                      <MessageOutlined  style={{ fontSize: '24px'}}/>
+                      <MessageOutlined  style={{ fontSize: '24px'}} onClick={() => { setOpen(!open);}}/>
                       <Text className="ml-2">12</Text>
                     </span>
                     <span className="d-flex flex-row align-items-center justify-content-center">
@@ -551,6 +554,65 @@ const ListFeed = () => {
                   </div>
                   <div className="cardActionRight" onClick={showModal}>
                     <img src={bookmark}/>
+                  </div>
+                </div>
+                <div style={{ display: open ? "block" : "none" }}>
+                  <div className="d-flex mt-3">
+                    <TextArea
+                      placeholder="Write a comment"
+                      autoSize={{ minRows: 1, maxRows: 4 }}
+                    />
+                  </div>
+                  <div className="d-flex flex-row mt-2">
+                    <div className="d-flex flex-column">
+                      <CaretUpOutlined />
+                      <Text type="secondary">44</Text>
+                      <CaretDownOutlined />
+                    </div>
+                    <div className="d-flex flex-column pl-3">
+                      <div className="d-flex flex-row">
+                        <Text style={{fontSize:"12px"}} strong>Jane Doe</Text><Text style={{fontSize:"12px"}} className="ml-2" type="secondary">1 hour ago</Text>
+                      </div>
+                      <div>
+                        <Text>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacus sapien, volutpat non diam ut, interdum tincidunt purus.
+                        </Text>
+                      </div>
+                      <div>
+                        <Link style={{fontSize:"12px"}}>
+                          1 Reply
+                        </Link>
+                      </div>
+                      <div className="d-flex flex-row mt-2">
+                        <div className="d-flex flex-column">
+                          <CaretUpOutlined />
+                          <Text type="secondary">44</Text>
+                          <CaretDownOutlined />
+                        </div>
+                        <div className="d-flex flex-column pl-3">
+                          <div className="d-flex flex-row">
+                            <Text style={{fontSize:"12px"}} strong>Jane Doe</Text><Text style={{fontSize:"12px"}} className="ml-2" type="secondary">1 hour ago</Text>
+                          </div>
+                          <div>
+                            <Text>
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacus sapien, volutpat non diam ut, interdum tincidunt purus.
+                            </Text>
+                          </div>
+                          <div>
+                            <Link style={{fontSize:"12px"}}>
+                              2 Replies
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="d-flex mt-3">
+                        <TextArea
+                          value="@JaneDoe"
+                          placeholder="Write a comment"
+                          autoSize={{ minRows: 1, maxRows: 4 }}
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
               </Card>
