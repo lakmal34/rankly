@@ -11,6 +11,7 @@ import { Mentions,Breadcrumb,Button,Divider,Form,Input,Select,Upload,message,Car
 import { CaretDownOutlined,CaretUpOutlined,CopyOutlined,SendOutlined,DeleteOutlined,CheckOutlined,UploadOutlined,ArrowLeftOutlined,EditOutlined,ArrowRightOutlined,CloseOutlined,LogoutOutlined,QuestionCircleOutlined,SafetyOutlined,LockOutlined,ToolOutlined,PlusOutlined,MoreOutlined,HeartOutlined,MessageOutlined,ShareAltOutlined,SearchOutlined,BellOutlined,HomeOutlined,FileAddOutlined,MailOutlined,UpOutlined,DownOutlined,AppstoreOutlined,UnorderedListOutlined,FilterOutlined,HeartFilled } from '@ant-design/icons';
 import logo from './assets/img/logoPlaceholder.png';
 import avatar from './assets/img/avatar.png';
+import ad1 from './assets/img/ad-1.png';
 import bookmark from './assets/img/bookmark.svg';
 import facebook from './assets/img/facebook.svg';
 import google from './assets/img/google.svg';
@@ -467,160 +468,214 @@ const ListFeed = () => {
               <img src={logo} className="Applogo mr-3" alt="logo" />
               <h2 className="my-0">Rankly</h2>
             </div>
+            <div className="d-none d-lg-flex flex-grow-1">
+              <Search className="px-5" placeholder="input search text" />
+            </div>
             <div className="d-flex flex-row align-items-center">
-              <SearchOutlined style={{ fontSize: '24px'}} className="mr-4"/>
-              <BellOutlined style={{ fontSize: '24px'}} className="mr-4"/>
+              <SearchOutlined style={{ fontSize: '24px'}} className="d-lg-none mr-4 mr-lg-5"/>
+              <HeartOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <img src={bookmark} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <MailOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <BellOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5"/>
               <div className="navAvatarImgWrap">
                 <img src={avatar} className="navAvatarImg"/>
               </div>
+              <Button type="primary" className="ml-4 d-none d-lg-block">Create Post</Button>
             </div>
           </div>
         </div>
         <Divider className="my-0"/>
       </div>
       <div className="container listFeed pt-3">
-        
         <div className="row">
-          {users.map((user, index) => (
-            <div key={index} className="col-12 col-lg-4 mb-3 listFeedCard">
-              <Card>
-                <div className="cardHead">
-                  <div className="cardHeadLeft d-flex flex-row align-items-center">
-                    <div className="avatarWrap">
-                      <img src={user.avatarImg} className="cardImg"/>
-                    </div>
-                    <div className="d-flex flex-column ml-2">
-                      <Text type="primary">{user.name}</Text>
-                      <Text type="secondary">{user.bio}</Text>
-                    </div>
-                  </div>
-                  <div className="cardHeadRight">
-                    <Dropdown overlay={menu} placement="bottomRight">
-                      <MoreOutlined style={{ fontSize: '24px'}} />
-                    </Dropdown>
-                  </div>
-                </div>
-                <Link to="/ListDetails">
-                    <div className="cardBody pt-3">
-                      <Text type="primary" strong>{user.title}</Text>
-                      <div className="cardBodyImgWrap mt-2">
-                        <Image
-                          width={'100%'}
-                          src={user.imgURL}
-                          preview={
-                            false
-                          }
-                        />
+          <div className="d-none"></div>
+          <div className="col-12 col-lg-8">
+            {users.map((user, index) => (
+              <div key={index} className="col-12 px-0 listFeedCard mb-3">
+                <Card>
+                  <div className="cardHead">
+                    <div className="cardHeadLeft d-flex flex-row align-items-center">
+                      <div className="avatarWrap">
+                        <img src={user.avatarImg} className="cardImg"/>
+                      </div>
+                      <div className="d-flex flex-column ml-2">
+                        <Text type="primary">{user.name}</Text>
+                        <Text type="secondary">{user.bio}</Text>
                       </div>
                     </div>
-                  </Link>
-                <div className="cardExpert py-2">
-                  <div className="cardExpertLeft">
-                    <div className="facepile">
-                      <div className="cardImgWrap">
-                        <img src="https://tinyurl.com/y44o75ox" className="cardImg"/>
-                      </div>
-                      <div className="cardImgWrap">
-                        <img src="https://tinyurl.com/y6oe9zfe" className="cardImg"/>
-                      </div>
-                      <div className="cardImgWrap">
-                        <img src="https://tinyurl.com/yyktos3r" className="cardImg"/>
-                      </div>
-                      <div className="cardImgWrap">
-                        <img src="https://tinyurl.com/y4fr59zm" className="cardImg"/>
-                      </div>
-                      <div className="cardImgWrap">
-                        <span>+7</span>
-                      </div>
+                    <div className="cardHeadRight">
+                      <Dropdown overlay={menu} placement="bottomRight">
+                        <MoreOutlined style={{ fontSize: '24px'}} />
+                      </Dropdown>
                     </div>
                   </div>
-                  <div className="cardExpertRight">
-                    <Text type="secondary">3 days ago</Text>
-                  </div>
-                </div>
-                <div className="cardAction pt-2">
-                  <div className="cardActionLeft">
-                    <span className="d-flex flex-row align-items-center justify-content-center mr-4">
-                      <HeartOutlined style={{ fontSize: '24px'}}/>
-                      <Text className="ml-2">12</Text>
-                    </span>   
-                    <span className="d-flex flex-row align-items-center justify-content-center mr-4">
-                      <MessageOutlined  style={{ fontSize: '24px'}} onClick={() => { setOpen(!open);}}/>
-                      <Text className="ml-2">12</Text>
-                    </span>
-                    <span className="d-flex flex-row align-items-center justify-content-center">
-                      <ShareAltOutlined style={{ fontSize: '24px'}} onClick={showModal3}/>
-                    </span>
-                  </div>
-                  <div className="cardActionRight" onClick={showModal}>
-                    <img src={bookmark}/>
-                  </div>
-                </div>
-                <div style={{ display: open ? "block" : "none" }}>
-                  <div className="d-flex mt-3">
-                    <TextArea
-                      placeholder="Write a comment"
-                      autoSize={{ minRows: 1, maxRows: 4 }}
-                    />
-                  </div>
-                  <div className="d-flex flex-row mt-2">
-                    <div className="d-flex flex-column">
-                      <CaretUpOutlined />
-                      <Text type="secondary">44</Text>
-                      <CaretDownOutlined />
-                    </div>
-                    <div className="d-flex flex-column pl-3">
-                      <div className="d-flex flex-row">
-                        <Text style={{fontSize:"12px"}} strong>Jane Doe</Text><Text style={{fontSize:"12px"}} className="ml-2" type="secondary">1 hour ago</Text>
-                      </div>
-                      <div>
-                        <Text>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacus sapien, volutpat non diam ut, interdum tincidunt purus.
-                        </Text>
-                      </div>
-                      <div>
-                        <Link style={{fontSize:"12px"}}>
-                          1 Reply
-                        </Link>
-                      </div>
-                      <div className="d-flex flex-row mt-2">
-                        <div className="d-flex flex-column">
-                          <CaretUpOutlined />
-                          <Text type="secondary">44</Text>
-                          <CaretDownOutlined />
-                        </div>
-                        <div className="d-flex flex-column pl-3">
-                          <div className="d-flex flex-row">
-                            <Text style={{fontSize:"12px"}} strong>Jane Doe</Text><Text style={{fontSize:"12px"}} className="ml-2" type="secondary">1 hour ago</Text>
-                          </div>
-                          <div>
-                            <Text>
-                              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacus sapien, volutpat non diam ut, interdum tincidunt purus.
-                            </Text>
-                          </div>
-                          <div>
-                            <Link style={{fontSize:"12px"}}>
-                              2 Replies
-                            </Link>
-                          </div>
+                  <Link to="/ListDetails">
+                      <div className="cardBody pt-3">
+                        <Text type="primary" strong className="title">{user.title}</Text>
+                        <div className="cardBodyImgWrap mt-2">
+                          <Image
+                            width={'100%'}
+                            src={user.imgURL}
+                            preview={
+                              false
+                            }
+                          />
                         </div>
                       </div>
-                      <div className="d-flex mt-3">
-                        <TextArea
-                          value="@JaneDoe"
-                          placeholder="Write a comment"
-                          autoSize={{ minRows: 1, maxRows: 4 }}
-                        />
+                    </Link>
+                  <div className="cardExpert py-2">
+                    <div className="cardExpertLeft">
+                      <div className="facepile">
+                        <div className="cardImgWrap">
+                          <img src="https://tinyurl.com/y44o75ox" className="cardImg"/>
+                        </div>
+                        <div className="cardImgWrap">
+                          <img src="https://tinyurl.com/y6oe9zfe" className="cardImg"/>
+                        </div>
+                        <div className="cardImgWrap">
+                          <img src="https://tinyurl.com/yyktos3r" className="cardImg"/>
+                        </div>
+                        <div className="cardImgWrap">
+                          <img src="https://tinyurl.com/y4fr59zm" className="cardImg"/>
+                        </div>
+                        <div className="cardImgWrap">
+                          <span>+7</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="cardExpertRight">
+                      <Text type="secondary">3 days ago</Text>
+                    </div>
+                  </div>
+                  <div className="cardAction pt-2">
+                    <div className="cardActionLeft">
+                      <span className="d-flex flex-row align-items-center justify-content-center mr-4">
+                        <HeartOutlined style={{ fontSize: '24px'}}/>
+                        <Text className="ml-2">12</Text>
+                      </span>   
+                      <span className="d-flex flex-row align-items-center justify-content-center mr-4">
+                        <MessageOutlined  style={{ fontSize: '24px'}} onClick={() => { setOpen(!open);}}/>
+                        <Text className="ml-2">12</Text>
+                      </span>
+                      <span className="d-flex flex-row align-items-center justify-content-center">
+                        <ShareAltOutlined style={{ fontSize: '24px'}} onClick={showModal3}/>
+                      </span>
+                    </div>
+                    <div className="cardActionRight" onClick={showModal}>
+                      <img src={bookmark}/>
+                    </div>
+                  </div>
+                  <div style={{ display: open ? "block" : "none" }}>
+                    <div className="d-flex mt-3">
+                      <TextArea
+                        placeholder="Write a comment"
+                        autoSize={{ minRows: 1, maxRows: 4 }}
+                      />
+                    </div>
+                    <div className="d-flex flex-row mt-2">
+                      <div className="d-flex flex-column">
+                        <CaretUpOutlined />
+                        <Text type="secondary">44</Text>
+                        <CaretDownOutlined />
+                      </div>
+                      <div className="d-flex flex-column pl-3">
+                        <div className="d-flex flex-row">
+                          <Text style={{fontSize:"12px"}} strong>Jane Doe</Text><Text style={{fontSize:"12px"}} className="ml-2" type="secondary">1 hour ago</Text>
+                        </div>
+                        <div>
+                          <Text>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacus sapien, volutpat non diam ut, interdum tincidunt purus.
+                          </Text>
+                        </div>
+                        <div>
+                          <Link style={{fontSize:"12px"}}>
+                            1 Reply
+                          </Link>
+                        </div>
+                        <div className="d-flex flex-row mt-2">
+                          <div className="d-flex flex-column">
+                            <CaretUpOutlined />
+                            <Text type="secondary">44</Text>
+                            <CaretDownOutlined />
+                          </div>
+                          <div className="d-flex flex-column pl-3">
+                            <div className="d-flex flex-row">
+                              <Text style={{fontSize:"12px"}} strong>Jane Doe</Text><Text style={{fontSize:"12px"}} className="ml-2" type="secondary">1 hour ago</Text>
+                            </div>
+                            <div>
+                              <Text>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacus sapien, volutpat non diam ut, interdum tincidunt purus.
+                              </Text>
+                            </div>
+                            <div>
+                              <Link style={{fontSize:"12px"}}>
+                                2 Replies
+                              </Link>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="d-flex mt-3">
+                          <TextArea
+                            value="@JaneDoe"
+                            placeholder="Write a comment"
+                            autoSize={{ minRows: 1, maxRows: 4 }}
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </Card>
+                </Card>
+            </div>
+            ))}
           </div>
-          ))}
+          <div className="d-none d-lg-block col-lg-4  sideMenuLg">
+            <img src={ad1} style={{width:'100%', height:'auto'}} className="mb-3"/>
+            {users.map((user, index) => (
+                <div key={index} className="col-12 px-0 listFeedCard mb-3">
+                  <Card>
+                    <Link to="/ListDetails">
+                      <div className="cardBody">
+                        <Text type="primary" className="title" style={{fontSize:'14px'}}>{user.title}</Text>
+                      </div>
+                    </Link>
+                    <div className="cardHead">
+                      <div className="cardHeadLeft d-flex flex-row align-items-center">
+                        <div className="d-flex flex-column">
+                          <Text type="secondary">{user.name}</Text>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="cardExpert py-2">
+                      <div className="cardExpertLeft">
+                        <div className="facepile">
+                          <div className="cardImgWrap">
+                            <img src="https://tinyurl.com/y44o75ox" className="cardImg"/>
+                          </div>
+                          <div className="cardImgWrap">
+                            <img src="https://tinyurl.com/y6oe9zfe" className="cardImg"/>
+                          </div>
+                          <div className="cardImgWrap">
+                            <img src="https://tinyurl.com/yyktos3r" className="cardImg"/>
+                          </div>
+                          <div className="cardImgWrap">
+                            <img src="https://tinyurl.com/y4fr59zm" className="cardImg"/>
+                          </div>
+                          <div className="cardImgWrap">
+                            <span>+7</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="cardExpertRight">
+                        <Text type="secondary">3 days ago</Text>
+                      </div>
+                    </div>
+                  </Card>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-      <div className="container-fluid px-0 fixedBottom bg-white">
+      <div className="container-fluid px-0 fixedBottom bg-white d-lg-none">
         <Divider className="my-0"/>
           <div className="container navBar">
             <div className="d-flex flex-row py-3">
