@@ -8,7 +8,7 @@ import {
 import './utility.less';
 import './App.less';
 import { Breadcrumb,Button,Divider,Form,Input,Select,Upload,message,Card,Typography,Dropdown,Menu,Image,Radio,Checkbox,Tabs,Modal } from 'antd';
-import { DeleteOutlined,CheckOutlined,UploadOutlined,ArrowLeftOutlined,EditOutlined,ArrowRightOutlined,CloseOutlined,LogoutOutlined,QuestionCircleOutlined,SafetyOutlined,LockOutlined,ToolOutlined,PlusOutlined,MoreOutlined,HeartOutlined,MessageOutlined,ShareAltOutlined,SearchOutlined,BellOutlined,HomeOutlined,FileAddOutlined,MailOutlined,UpOutlined,DownOutlined,AppstoreOutlined,UnorderedListOutlined,FilterOutlined,HeartFilled } from '@ant-design/icons';
+import { SendOutlined,DeleteOutlined,CheckOutlined,UploadOutlined,ArrowLeftOutlined,EditOutlined,ArrowRightOutlined,CloseOutlined,LogoutOutlined,QuestionCircleOutlined,SafetyOutlined,LockOutlined,ToolOutlined,PlusOutlined,MoreOutlined,HeartOutlined,MessageOutlined,ShareAltOutlined,SearchOutlined,BellOutlined,HomeOutlined,FileAddOutlined,MailOutlined,UpOutlined,DownOutlined,AppstoreOutlined,UnorderedListOutlined,FilterOutlined,HeartFilled } from '@ant-design/icons';
 import logo from './assets/img/logoPlaceholder.png';
 import avatar from './assets/img/avatar.png';
 import bookmark from './assets/img/bookmark.svg';
@@ -40,31 +40,13 @@ const props = {
   },
 };
 
-const menu = (
-  <Menu>
-    <Menu.Item>
-      <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">
-        1st menu item
-      </a>
-    </Menu.Item>
-    <Menu.Item>
-      <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com/">
-        2nd menu item
-      </a>
-    </Menu.Item>
-    <Menu.Item>
-      <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/">
-        3rd menu item
-      </a>
-    </Menu.Item>
-  </Menu>
-);
-
-
 export default function BasicExample() {
   return (
   <Router>
     <Switch>
+      <Route path="/messagebody">
+        <MessageBody />
+      </Route>
       <Route path="/squadrequest">
         <SquadRequest />
       </Route>
@@ -427,6 +409,9 @@ function Login(){
 
 const ListFeed = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isModalVisible2, setIsModalVisible2] = useState(false);
+  const [isModalVisible3, setIsModalVisible3] = useState(false);
+
   const showModal = () => {
     setIsModalVisible(true);
   };
@@ -438,6 +423,39 @@ const ListFeed = () => {
   const handleCancel = () => {
     setIsModalVisible(false);
   };
+
+  const showModal2 = () => {
+    setIsModalVisible2(true);
+  };
+
+  const handleOk2 = () => {
+    setIsModalVisible2(false);
+  };
+
+  const handleCancel2 = () => {
+    setIsModalVisible2(false);
+  };
+
+  const showModal3 = () => {
+    setIsModalVisible3(true);
+  };
+
+  const handleOk3 = () => {
+    setIsModalVisible3(false);
+  };
+
+  const handleCancel3 = () => {
+    setIsModalVisible3(false);
+  };
+
+  const menu = (
+    <Menu>
+      <Menu.Item onClick={showModal2}>
+          Report
+      </Menu.Item>
+    </Menu>
+  );
+
   return(
     <div>
       <div className="container-fluid px-0 fixedTop bg-white">
@@ -528,7 +546,7 @@ const ListFeed = () => {
                       <Text className="ml-2">12</Text>
                     </span>
                     <span className="d-flex flex-row align-items-center justify-content-center">
-                      <ShareAltOutlined style={{ fontSize: '24px'}}/>
+                      <ShareAltOutlined style={{ fontSize: '24px'}} onClick={showModal3}/>
                     </span>
                   </div>
                   <div className="cardActionRight" onClick={showModal}>
@@ -562,7 +580,12 @@ const ListFeed = () => {
             </div>
           </div>
       </div>
-      <Modal title="Add to list" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+      <Modal 
+        title="Add to list" 
+        visible={isModalVisible} 
+        onOk={handleOk} 
+        onCancel={handleCancel}
+      >
         <div>
           <div className="mb-2">
             <b>Sort by</b>
@@ -588,6 +611,59 @@ const ListFeed = () => {
               </Checkbox>
             </Checkbox.Group>
           </div>
+        </div>
+      </Modal>
+      <Modal 
+        title="Report" 
+        visible={isModalVisible2}
+        onOk={handleOk2} 
+        onCancel={handleCancel2}
+        footer={[
+          <Button key="back" onClick={handleCancel2}>
+            Cancel
+          </Button>,
+          <Button key="submit" type="primary" onClick={handleOk2}>
+            Report
+          </Button>,
+        ]}
+      >
+        <div className="mt-2">
+          <Checkbox.Group>
+            <Checkbox className="checkboxGroupItem ml-0">
+              Suggestive, Unsettling, Contains Mature Themes
+            </Checkbox>
+            <Checkbox className="checkboxGroupItem ml-0">
+              Nudity, Sexual Activity, Non-Consensual Sexualization
+            </Checkbox>
+            <Checkbox className="checkboxGroupItem ml-0">
+              Spam, Fake News, Scams, Fraud
+            </Checkbox>
+            <Checkbox className="checkboxGroupItem ml-0">
+              Discrimination, Hateful Ideology, Illegal Content, Gore
+            </Checkbox>
+            <Checkbox className="checkboxGroupItem ml-0">
+              Harassment, Self-Harm, Personal Information
+            </Checkbox>
+          </Checkbox.Group>
+        </div>
+      </Modal>
+      <Modal 
+        title="Share" 
+        visible={isModalVisible3} 
+        onOk={handleOk3} 
+        onCancel={handleCancel3}
+      >
+        <div className="mb-3">
+          <div className="mb-2">
+            <b>Share with people and squads</b>
+          </div>
+          <Search placeholder="input search text" enterButton />
+        </div>
+        <div className="mb-3">
+          <div className="mb-2">
+            <b>Share URL</b>
+          </div>
+          <Search placeholder="input search text" enterButton />
         </div>
       </Modal>
     </div>
@@ -2234,6 +2310,64 @@ function SquadRequest() {
               </div>
             </div>
           </div>
+      </div>
+    </div>
+  )
+}
+
+function MessageBody() {
+  return(
+    <div>
+      <div className="container-fluid px-0 fixedTop bg-white">
+        <div className="container navBar py-2">
+          <div className="d-flex flex-row py-2 align-items-center justify-content-between">
+            <div className="d-flex flex-row align-items-center">
+              <ArrowLeftOutlined style={{ fontSize: '24px'}}/>
+              <Title level={5} className="ml-3 mb-0">Mark Bergman</Title>
+            </div>
+          </div>
+        </div>
+        <Divider className="my-0"/>
+      </div>
+      <div className="container messageBody">
+        <div className="row">
+          <div className="col-12 px-0">
+            <div className="d-flex flex-column px-3 py-3">
+            <Divider>Today</Divider>
+            </div>
+          </div>
+          <div className="col-12 px-0">
+            <div className="d-flex flex-column px-3 py-2 messageContent">
+              <div className="rowSetter">
+                <div className="messageWrap d-flex flex-column">
+                  <div className="sentMessage">
+                    <p className="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas quam eros, commodo a mi quis, semper sodales est.</p>
+                  </div>
+                  <p style={{ fontSize: '12px'}} className="mb-0 mt-1">10.15 AM</p>
+                </div>
+              </div>
+              <div className="rowSetter">
+                <div className="messageWrap d-flex flex-column">
+                  <div className="recivedMessage">
+                    <p className="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas quam eros, commodo a mi quis, semper sodales est.</p>
+                  </div>
+                  <p style={{ fontSize: '12px'}} className="mb-0 mt-1">10.15 AM</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="container-fluid px-0 fixedBottom bg-white">
+        <Divider className="my-0"/>
+        <div className="d-flex flex-row">
+          <Form.Item className="mb-0 border-0 compose-textarea w-100">
+            <Input.TextArea />
+          </Form.Item>
+          <a className="d-flex align-items-center justify-content-center compose-send">
+            <SendOutlined style={{ fontSize: '18px'}}/>
+          </a>
+        </div>
       </div>
     </div>
   )

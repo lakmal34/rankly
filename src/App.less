@@ -65,6 +65,10 @@
   margin-top: 54px;
 }
 
+.messageBody{
+  margin-top: 54px;
+}
+
 .ant-tabs-tab{
   margin-right: 0px;
   display: flex;
@@ -379,7 +383,7 @@
   }
   
   .myProfileMore{
-    border-bottom:1px solid rgba(0, 0, 0, 0.05);
+    border-bottom:1px solid @neutral-2;
     display: flex;
     flex:1;
     align-items: center;
@@ -447,7 +451,7 @@
   }
   
   .myProfileMore{
-    border-bottom:1px solid rgba(0, 0, 0, 0.05);
+    border-bottom:1px solid @neutral-2;
     display: flex;
     flex:1;
     align-items: center;
@@ -601,5 +605,49 @@
       position: relative;
       border-radius: 50%;
     }
+  }
+}
+
+/**/
+
+.compose-textarea{
+	textarea{
+		border-top:0px;
+		border-right:0px;
+		border-bottom:0px;
+		border-left:0px;
+		resize: none;
+	}
+}
+
+.compose-send{
+  width: 52px;
+  border-left: 1px solid @neutral-2;
+}
+
+.messageBody{
+  .sentMessage{
+    max-width: 300px;
+    background-color: @blue-6;
+    color:@neutral-1;
+    border-radius: 8px;
+    padding:8px 12px 8px 12px;
+  }
+  .recivedMessage{
+    max-width: 300px;
+    background-color: @neutral-3;
+    border-radius: 8px;
+    padding:8px 12px 8px 12px;
+  }
+}
+
+.messageContent{
+  .rowSetter{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 16px;
+  }
+  .rowSetter:nth-child(odd){
+    flex-direction: row-reverse;
   }
 }
