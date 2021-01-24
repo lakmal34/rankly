@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import './utility.less';
 import './App.less';
-import { Mentions,Breadcrumb,Button,Divider,Form,Input,Select,Upload,message,Card,Typography,Dropdown,Menu,Image,Radio,Checkbox,Tabs,Modal } from 'antd';
+import { Affix,Breadcrumb,Button,Divider,Form,Input,Select,Upload,message,Card,Typography,Dropdown,Menu,Image,Radio,Checkbox,Tabs,Modal } from 'antd';
 import { CaretDownOutlined,CaretUpOutlined,CopyOutlined,SendOutlined,DeleteOutlined,CheckOutlined,UploadOutlined,ArrowLeftOutlined,EditOutlined,ArrowRightOutlined,CloseOutlined,LogoutOutlined,QuestionCircleOutlined,SafetyOutlined,LockOutlined,ToolOutlined,PlusOutlined,MoreOutlined,HeartOutlined,MessageOutlined,ShareAltOutlined,SearchOutlined,BellOutlined,HomeOutlined,FileAddOutlined,MailOutlined,UpOutlined,DownOutlined,AppstoreOutlined,UnorderedListOutlined,FilterOutlined,HeartFilled } from '@ant-design/icons';
 import logo from './assets/img/logoPlaceholder.png';
 import avatar from './assets/img/avatar.png';
@@ -175,7 +175,7 @@ function Signup() {
                 <Button type="primary" className="w-100"><Link to="/Signup2">Continue</Link></Button>
               </div>
               <div className="mt-4 px-0">
-                <p>Already have an account?<Link>Login</Link>.</p>
+                <p>Already have an account?<Link className="ml-2">Login</Link>.</p>
               </div>
               </div>
             </div>
@@ -310,7 +310,7 @@ function Signup3(){
               </div>
               <div className="mt-4">
                 <div className="mb-2">
-                  <b>Your phone number</b>
+                  <b>Username we picked for you</b>
                 </div>
                 <div>
                   <Form.Item>
@@ -398,7 +398,7 @@ function Login(){
                 <Button type="primary" className="w-100"><Link to="/Signup2">Continue</Link></Button>
               </div>
               <div className="mt-4 px-0">
-                <p>Already have an account?<Link>Login</Link>.</p>
+                <p>Already have an account?<Link className="ml-2">Signup</Link>.</p>
               </div>
               </div>
             </div>
@@ -801,6 +801,8 @@ const ListDetails = () =>{
   const handleCancel = () => {
     setIsModalVisible(false);
   };
+
+  const [top, setTop] = useState(68);
   return(
     <div>
       <div className="container-fluid px-0 fixedTop bg-white">
@@ -810,13 +812,19 @@ const ListDetails = () =>{
               <img src={logo} className="Applogo mr-3" alt="logo" />
               <h2 className="my-0">Rankly</h2>
             </div>
+            <div className="d-none d-lg-flex flex-grow-1">
+              <Search className="px-5" placeholder="input search text" />
+            </div>
             <div className="d-flex flex-row align-items-center">
-              <SearchOutlined style={{ fontSize: '24px'}} className="mr-4"/>
-              <BellOutlined style={{ fontSize: '24px'}} className="mr-4"/>
+              <SearchOutlined style={{ fontSize: '24px'}} className="d-lg-none mr-4 mr-lg-5"/>
+              <HeartOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <img src={bookmark} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <MailOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <BellOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5"/>
               <div className="navAvatarImgWrap">
                 <img src={avatar} className="navAvatarImg"/>
               </div>
-              
+              <Button type="primary" className="ml-4 d-none d-lg-block">Create Post</Button>
             </div>
           </div>
         </div>
@@ -851,7 +859,7 @@ const ListDetails = () =>{
               </div>
             </div>
           </div>
-          <div className="col-12 col-lg-7 col-md-7 mt-4">
+          <div className="col-12 col-lg-7 col-md-12 mt-4">
             <Card className="detailsPrimaryCard border-0">
               <div className="d-flex flex-row justify-content-between">
                 <Title level={5}>#1. Sony WH-1000XM4</Title>
@@ -920,8 +928,43 @@ const ListDetails = () =>{
                 </div>
               </div>
             </Card>
+            <div className="listItemDetails py-3">
+              <Text>
+                The Sony WH-1000XM4 deliver excellent noise-cancellation and surprising sound quality
+                While they don't look significantly different from their predecessors, the Sony WH-1000XM3, a number of new features including multipoint pairing, DSEE Extreme upscaling, conversational awareness and auto-play/pause using a built-in sensor all help the WH-1000XM4 claim the title of best headphones in 2020.
+              </Text>
+              <ul>
+                <li>Closed acoustic design </li>
+                <li>8.95 oz weight</li>
+                <li>3.94 ft cable length</li>
+                <li>4hz 40khz frequency responce</li>
+                <li>1.57-inch Drivers</li>
+                <li>Dome-type driver</li>
+              </ul>
+              <Text>
+                The Sony WH-1000XM4 deliver excellent noise-cancellation and surprising sound quality
+                While they don't look significantly different from their predecessors, the Sony WH-1000XM3, a number of new features including multipoint pairing, DSEE Extreme upscaling, conversational awareness and auto-play/pause using a built-in sensor all help the WH-1000XM4 claim the title of best headphones in 2020.
+              </Text>
+            </div>
           </div>
-          <div className="d-none d-sm-none d-md-block col-lg-5 col-md-5 mt-4">
+          <div className="d-none d-sm-none d-md-none d-lg-block col-lg-5 col-md-5 mt-4">
+            <Affix offsetTop={top}>
+            <div className="d-flex flex-row detailsSecondaryCard bg-light px-2 py-2 mb-2">
+              <div className="cardBodyImgWrap">
+                <Image
+                width={'100%'}
+                src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                preview={
+                  false
+                }
+                />
+              </div>
+              <div className="d-flex flex-column ml-2">
+                <Text type="primary" strong>#1</Text>
+                <Text type="primary">Sony WH-1000XM4</Text>
+              </div>
+              
+            </div>
             <div className="d-flex flex-row detailsSecondaryCard bg-light px-2 py-2 mb-2">
               <div className="cardBodyImgWrap">
                 <Image
@@ -952,12 +995,12 @@ const ListDetails = () =>{
                 <Text type="primary" strong>#3</Text>
                 <Text type="primary">Sony WH-1000XM4</Text>
               </div>
-              
             </div>
+            </Affix>
           </div>
         </div>
       </div>
-      <div className="container-fluid px-0 fixedBottom bg-white">
+      <div className="container-fluid px-0 fixedBottom bg-white d-lg-none">
         <Divider className="my-0"/>
           <div className="container navBar">
             <div className="d-flex flex-row py-3">
@@ -1029,36 +1072,54 @@ function FilterList(){
       </div>
       <div className="container listDetails pt-4 pb-5">
         <div className="row">
-
           <div className="col-12 mb-3">
             <div className="mb-2">
               <b>Sort by</b>
             </div>
             <Select defaultValue="option1" className="w-100">
-              <Option value="option1">option1</Option>
-              <Option value="option2">option2</Option>
-              <Option value="option3">option3</Option>
+              <Option value="option1">Price Lowest </Option>
+              <Option value="option2">Price Highest </Option>
+              <Option value="option3">Newest</Option>
             </Select>
           </div>
-
-          <div className="col-12">
+          <div className="col-12 mb-2">
             <div className="mb-2">
               <b>Wireless type</b>
             </div>
             <Checkbox.Group>
               <Checkbox className="checkboxGroupItem ml-0">
-                Option A
+                Bluetooth
               </Checkbox>
               <Checkbox className="checkboxGroupItem ml-0">
-                Option B
+                RF
               </Checkbox>
               <Checkbox className="checkboxGroupItem ml-0">
-                Option C
+                Infared
+              </Checkbox>
+              <Checkbox className="checkboxGroupItem ml-0">
+                NFC
+              </Checkbox>
+              <Checkbox className="checkboxGroupItem ml-0">
+                KLEER
               </Checkbox>
             </Checkbox.Group>
           </div>
-
-
+          <div className="col-12 mb-2">
+            <div className="mb-2">
+              <b>Earcup style</b>
+            </div>
+            <Checkbox.Group>
+              <Checkbox className="checkboxGroupItem ml-0">
+                Open-back
+              </Checkbox>
+              <Checkbox className="checkboxGroupItem ml-0">
+                Semi open back
+              </Checkbox>
+              <Checkbox className="checkboxGroupItem ml-0">
+                Closed-back
+              </Checkbox>
+            </Checkbox.Group>
+          </div>
         </div>
       </div>
     </div>
@@ -1075,18 +1136,24 @@ function FavouriteList(){
               <img src={logo} className="Applogo mr-3" alt="logo" />
               <h2 className="my-0">Rankly</h2>
             </div>
+            <div className="d-none d-lg-flex flex-grow-1">
+              <Search className="px-5" placeholder="input search text" />
+            </div>
             <div className="d-flex flex-row align-items-center">
-              <SearchOutlined style={{ fontSize: '24px'}} className="mr-4"/>
-              <BellOutlined style={{ fontSize: '24px'}} className="mr-4"/>
+              <SearchOutlined style={{ fontSize: '24px'}} className="d-lg-none mr-4 mr-lg-5"/>
+              <HeartOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <img src={bookmark} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <MailOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <BellOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5"/>
               <div className="navAvatarImgWrap">
                 <img src={avatar} className="navAvatarImg"/>
               </div>
+              <Button type="primary" className="ml-4 d-none d-lg-block">Create Post</Button>
             </div>
           </div>
         </div>
         <Divider className="my-0"/>
       </div>
-
       <div className="container favouriteList">
         <div className="row">
           <div className="col-12 px-0">
@@ -1097,7 +1164,7 @@ function FavouriteList(){
                   <div className="cardBodyImgWrap flex-shrink-0">
                     <Image
                     width={'100%'}
-                    src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                    src="https://tinyurl.com/yxetcq2h"
                     />
                     <div className="favOverlay">
                           <HeartFilled style={{fontSize:"24px",}}/>
@@ -1120,7 +1187,7 @@ function FavouriteList(){
                   <div className="cardBodyImgWrap flex-shrink-0">
                     <Image
                     width={'100%'}
-                    src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                    src="https://tinyurl.com/y2wmfu6p"
                     />
                     <div className="favOverlay">
                       <HeartFilled style={{fontSize:"24px",}}/>
@@ -1142,8 +1209,7 @@ function FavouriteList(){
           </div>
         </div>
       </div>
-
-      <div className="container-fluid px-0 fixedBottom bg-white">
+      <div className="container-fluid px-0 fixedBottom bg-white d-lg-none">
         <Divider className="my-0"/>
           <div className="container navBar">
             <div className="d-flex flex-row py-3">
@@ -1165,7 +1231,6 @@ function FavouriteList(){
             </div>
           </div>
       </div>
-
     </div>
   );
 }
@@ -1180,28 +1245,42 @@ function BookmarkList(){
               <img src={logo} className="Applogo mr-3" alt="logo" />
               <h2 className="my-0">Rankly</h2>
             </div>
+            <div className="d-none d-lg-flex flex-grow-1">
+              <Search className="px-5" placeholder="input search text" />
+            </div>
             <div className="d-flex flex-row align-items-center">
-              <SearchOutlined style={{ fontSize: '24px'}} className="mr-4"/>
-              <BellOutlined style={{ fontSize: '24px'}} className="mr-4"/>
+              <SearchOutlined style={{ fontSize: '24px'}} className="d-lg-none mr-4 mr-lg-5"/>
+              <HeartOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <img src={bookmark} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <MailOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <BellOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5"/>
               <div className="navAvatarImgWrap">
                 <img src={avatar} className="navAvatarImg"/>
               </div>
+              <Button type="primary" className="ml-4 d-none d-lg-block">Create Post</Button>
             </div>
           </div>
         </div>
         <Divider className="my-0"/>
       </div>
-      <div className="d-flex flex-column py-1 bookmarkList">
-        <Divider className="my-0"></Divider>
-        <div className="container">
-          <div className="py-2 d-flex flex-column">
-            <Text type="primary">Christmas gifts</Text>
-            <Text type="secondary">4 Listings  8 month ago</Text>
+
+      <div className="container bookmarkList">
+        <div className="row">
+          <div className="col-12 px-0">
+            <div className="d-flex flex-column py-1">
+              <Divider className="my-0"></Divider>
+              <div className="container">
+                <div className="py-2 d-flex flex-column">
+                  <Text type="primary">Christmas gifts</Text>
+                  <Text type="secondary">4 Listings  8 month ago</Text>
+                </div>
+              </div>
+              <Divider className="my-0"></Divider>
+            </div>
           </div>
         </div>
-        <Divider className="my-0"></Divider>
       </div>
-      <div className="container-fluid px-0 fixedBottom bg-white">
+      <div className="container-fluid px-0 fixedBottom bg-white d-lg-none">
         <Divider className="my-0"/>
           <div className="container navBar">
             <div className="d-flex flex-row py-3">
@@ -1237,12 +1316,19 @@ function BookmarkDetails() {
               <img src={logo} className="Applogo mr-3" alt="logo" />
               <h2 className="my-0">Rankly</h2>
             </div>
+            <div className="d-none d-lg-flex flex-grow-1">
+              <Search className="px-5" placeholder="input search text" />
+            </div>
             <div className="d-flex flex-row align-items-center">
-              <SearchOutlined style={{ fontSize: '24px'}} className="mr-4"/>
-              <BellOutlined style={{ fontSize: '24px'}} className="mr-4"/>
+              <SearchOutlined style={{ fontSize: '24px'}} className="d-lg-none mr-4 mr-lg-5"/>
+              <HeartOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <img src={bookmark} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <MailOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <BellOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5"/>
               <div className="navAvatarImgWrap">
                 <img src={avatar} className="navAvatarImg"/>
               </div>
+              <Button type="primary" className="ml-4 d-none d-lg-block">Create Post</Button>
             </div>
           </div>
         </div>
@@ -1264,7 +1350,7 @@ function BookmarkDetails() {
               <div className="cardBodyImgWrap flex-shrink-0">
                 <Image
                 width={'100%'}
-                src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                src="https://tinyurl.com/yxetcq2h"
                 />
               </div>
               <div className="d-flex flex-column ml-2">
@@ -1282,11 +1368,11 @@ function BookmarkDetails() {
               <div className="cardBodyImgWrap flex-shrink-0">
                 <Image
                 width={'100%'}
-                src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                src="https://tinyurl.com/y2wmfu6p"
                 />
               </div>
               <div className="d-flex flex-column ml-2">
-                <Text type="primary" strong>The best wireless headphones you can buy in 2020</Text>
+                <Text type="primary" strong>Sony WH-1000XM4</Text>
                 <Link>The best wireless headphones you can buy in 2020</Link>
                 <span className="d-flex flex-row">
                   <Text type="secondary" className="mr-3">Jane Cooper</Text>
@@ -1299,7 +1385,7 @@ function BookmarkDetails() {
         </div>
       </div>
 
-      <div className="container-fluid px-0 fixedBottom bg-white">
+      <div className="container-fluid px-0 fixedBottom bg-white d-lg-none">
         <Divider className="my-0"/>
           <div className="container navBar">
             <div className="d-flex flex-row py-3">
@@ -1325,7 +1411,18 @@ function BookmarkDetails() {
   )
 }
 
-function MyProfile() {
+const MyProfile = () => {
+
+  const menu = (
+    <Menu>
+      <Menu.Item>
+          Comments
+      </Menu.Item>
+      <Menu.Item>
+        Following
+      </Menu.Item>
+    </Menu>
+  );
   return(
     <div>
       <div className="container-fluid px-0 fixedTop bg-white">
@@ -1335,13 +1432,19 @@ function MyProfile() {
               <img src={logo} className="Applogo mr-3" alt="logo" />
               <h2 className="my-0">Rankly</h2>
             </div>
+            <div className="d-none d-lg-flex flex-grow-1">
+              <Search className="px-5" placeholder="input search text" />
+            </div>
             <div className="d-flex flex-row align-items-center">
-              <SearchOutlined style={{ fontSize: '24px'}} className="mr-4"/>
-              <BellOutlined style={{ fontSize: '24px'}} className="mr-4"/>
+              <SearchOutlined style={{ fontSize: '24px'}} className="d-lg-none mr-4 mr-lg-5"/>
+              <HeartOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <img src={bookmark} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <MailOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <BellOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5"/>
               <div className="navAvatarImgWrap">
                 <img src={avatar} className="navAvatarImg"/>
               </div>
-              
+              <Button type="primary" className="ml-4 d-none d-lg-block">Create Post</Button>
             </div>
           </div>
         </div>
@@ -1377,7 +1480,7 @@ function MyProfile() {
                       <div className="d-flex flex-column ml-2">
                         <Text type="primary" strong>The best wireless headphones you can buy in 2020</Text>
                         <span className="d-flex flex-row">
-                          <Text type="secondary" className="mr-3">Jane Cooper</Text>
+                          <Text type="secondary" className="mr-3">12 experts verified</Text>
                           <Text type="secondary">8 month ago</Text>
                         </span>
                       </div>
@@ -1439,7 +1542,7 @@ function MyProfile() {
         </div>
       </div>
 
-      <div className="container-fluid px-0 fixedBottom bg-white">
+      <div className="container-fluid px-0 fixedBottom bg-white d-lg-none">
         <Divider className="my-0"/>
           <div className="container navBar">
             <div className="d-flex flex-row py-3">
@@ -1466,6 +1569,16 @@ function MyProfile() {
 }
 
 function MyComments(){
+  const menu2 = (
+    <Menu>
+      <Menu.Item>
+          Comments
+      </Menu.Item>
+      <Menu.Item>
+        Following
+      </Menu.Item>
+    </Menu>
+  );
   return(
     <div>
       <div className="container-fluid px-0 fixedTop bg-white">
@@ -1475,18 +1588,24 @@ function MyComments(){
               <img src={logo} className="Applogo mr-3" alt="logo" />
               <h2 className="my-0">Rankly</h2>
             </div>
+            <div className="d-none d-lg-flex flex-grow-1">
+              <Search className="px-5" placeholder="input search text" />
+            </div>
             <div className="d-flex flex-row align-items-center">
-              <SearchOutlined style={{ fontSize: '24px'}} className="mr-4"/>
-              <BellOutlined style={{ fontSize: '24px'}} className="mr-4"/>
+              <SearchOutlined style={{ fontSize: '24px'}} className="d-lg-none mr-4 mr-lg-5"/>
+              <HeartOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <img src={bookmark} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <MailOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <BellOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5"/>
               <div className="navAvatarImgWrap">
                 <img src={avatar} className="navAvatarImg"/>
               </div>
+              <Button type="primary" className="ml-4 d-none d-lg-block">Create Post</Button>
             </div>
           </div>
         </div>
         <Divider className="my-0"/>
       </div>
-
       <div className="container myComments">
         <div className="row">
           <div className="col-12 px-0">
@@ -1512,7 +1631,7 @@ function MyComments(){
                 </TabPane>
               </Tabs>
               <div className="myProfileMore">
-                <Dropdown overlay={menu} placement="bottomRight" arrow>
+                <Dropdown overlay={menu2} placement="bottomRight" arrow>
                   <Button>More <DownOutlined /></Button>
                 </Dropdown>
               </div>
@@ -1527,7 +1646,7 @@ function MyComments(){
                 />
               </div>
               <div className="d-flex flex-column ml-3">
-                <Text type="primary">The best wireless headphones you can buy in 2020</Text>
+                <Text type="primary">Thank you for the suggestion, i bought this and it was amazing.</Text>
                 <span className="d-flex flex-row">
                   <Text type="secondary" className="mr-3">Jane Cooper</Text>
                   <Text type="secondary">8 month ago</Text>
@@ -1539,7 +1658,7 @@ function MyComments(){
         </div>
       </div>
 
-      <div className="container-fluid px-0 fixedBottom bg-white">
+      <div className="container-fluid px-0 fixedBottom bg-white d-lg-none">
         <Divider className="my-0"/>
           <div className="container navBar">
             <div className="d-flex flex-row py-3">
@@ -1575,12 +1694,19 @@ function MyFollowings(){
               <img src={logo} className="Applogo mr-3" alt="logo" />
               <h2 className="my-0">Rankly</h2>
             </div>
+            <div className="d-none d-lg-flex flex-grow-1">
+              <Search className="px-5" placeholder="input search text" />
+            </div>
             <div className="d-flex flex-row align-items-center">
-              <SearchOutlined style={{ fontSize: '24px'}} className="mr-4"/>
-              <BellOutlined style={{ fontSize: '24px'}} className="mr-4"/>
+              <SearchOutlined style={{ fontSize: '24px'}} className="d-lg-none mr-4 mr-lg-5"/>
+              <HeartOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <img src={bookmark} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <MailOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <BellOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5"/>
               <div className="navAvatarImgWrap">
                 <img src={avatar} className="navAvatarImg"/>
               </div>
+              <Button type="primary" className="ml-4 d-none d-lg-block">Create Post</Button>
             </div>
           </div>
         </div>
@@ -1612,7 +1738,7 @@ function MyFollowings(){
                 </TabPane>
               </Tabs>
               <div className="myProfileMore">
-                <Dropdown overlay={menu} placement="bottomRight" arrow>
+                <Dropdown placement="bottomRight" arrow>
                   <Button>More <DownOutlined /></Button>
                 </Dropdown>
               </div>
@@ -1638,7 +1764,7 @@ function MyFollowings(){
         </div>
       </div>
 
-      <div className="container-fluid px-0 fixedBottom bg-white">
+      <div className="container-fluid px-0 fixedBottom bg-white d-lg-none">
         <Divider className="my-0"/>
           <div className="container navBar">
             <div className="d-flex flex-row py-3">
@@ -1674,18 +1800,24 @@ function AccountSettings(){
               <img src={logo} className="Applogo mr-3" alt="logo" />
               <h2 className="my-0">Rankly</h2>
             </div>
+            <div className="d-none d-lg-flex flex-grow-1">
+              <Search className="px-5" placeholder="input search text" />
+            </div>
             <div className="d-flex flex-row align-items-center">
-              <SearchOutlined style={{ fontSize: '24px'}} className="mr-4"/>
-              <BellOutlined style={{ fontSize: '24px'}} className="mr-4"/>
+              <SearchOutlined style={{ fontSize: '24px'}} className="d-lg-none mr-4 mr-lg-5"/>
+              <HeartOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <img src={bookmark} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <MailOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <BellOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5"/>
               <div className="navAvatarImgWrap">
                 <img src={avatar} className="navAvatarImg"/>
               </div>
+              <Button type="primary" className="ml-4 d-none d-lg-block">Create Post</Button>
             </div>
           </div>
         </div>
         <Divider className="my-0"/>
       </div>
-
       <div className="container accountsettings">
         <div className="row">
           <div className="col-12 px-0">
@@ -1740,8 +1872,7 @@ function AccountSettings(){
 
         </div>
       </div>
-
-      <div className="container-fluid px-0 fixedBottom bg-white">
+      <div className="container-fluid px-0 fixedBottom bg-white d-lg-none">
         <Divider className="my-0"/>
           <div className="container navBar">
             <div className="d-flex flex-row py-3">
@@ -1777,12 +1908,19 @@ function MyMessages(){
               <img src={logo} className="Applogo mr-3" alt="logo" />
               <h2 className="my-0">Rankly</h2>
             </div>
+            <div className="d-none d-lg-flex flex-grow-1">
+              <Search className="px-5" placeholder="input search text" />
+            </div>
             <div className="d-flex flex-row align-items-center">
-              <SearchOutlined style={{ fontSize: '24px'}} className="mr-4"/>
-              <BellOutlined style={{ fontSize: '24px'}} className="mr-4"/>
+              <SearchOutlined style={{ fontSize: '24px'}} className="d-lg-none mr-4 mr-lg-5"/>
+              <HeartOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <img src={bookmark} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <MailOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <BellOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5"/>
               <div className="navAvatarImgWrap">
                 <img src={avatar} className="navAvatarImg"/>
               </div>
+              <Button type="primary" className="ml-4 d-none d-lg-block">Create Post</Button>
             </div>
           </div>
         </div>
@@ -1811,7 +1949,7 @@ function MyMessages(){
         </div>
       </div>
 
-      <div className="container-fluid px-0 fixedBottom bg-white">
+      <div className="container-fluid px-0 fixedBottom bg-white d-lg-none">
         <Divider className="my-0"/>
           <div className="container navBar">
             <div className="d-flex flex-row py-3">
@@ -1861,7 +1999,7 @@ function SearchResults(){
                   <div className="cardBodyImgWrap flex-shrink-0">
                     <Image
                     width={'100%'}
-                    src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                    src="https://tinyurl.com/yxetcq2h"
                     />
                   </div>
                   <div className="d-flex flex-column ml-2">
@@ -1881,11 +2019,8 @@ function SearchResults(){
                   <div className="cardBodyImgWrap flex-shrink-0">
                     <Image
                     width={'100%'}
-                    src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                    src="https://tinyurl.com/y2wmfu6p"
                     />
-                    <div className="favOverlay">
-                      <HeartFilled style={{fontSize:"24px",}}/>
-                    </div>
                   </div>
                   <div className="d-flex flex-column ml-2">
                     <Text type="primary" strong>Sony WH-1000XM4</Text>
@@ -1922,28 +2057,6 @@ function SearchResults(){
           </div>
         </div>
       </div>
-      <div className="container-fluid px-0 fixedBottom bg-white">
-        <Divider className="my-0"/>
-          <div className="container navBar">
-            <div className="d-flex flex-row py-3">
-              <div className="d-flex flex-fill align-items-center justify-content-center">
-                <HomeOutlined style={{ fontSize: '24px'}}/>
-              </div>
-              <div className="d-flex align-items-center flex-fill align-items-center justify-content-center">
-                <HeartOutlined style={{ fontSize: '24px'}}/>
-              </div>
-              <div className="d-flex flex-fill align-items-center justify-content-center">
-                <FileAddOutlined style={{ fontSize: '24px'}}/>
-              </div>
-              <div className="d-flex flex-fill align-items-center justify-content-center">
-              <img src={bookmark}/>
-              </div>
-              <div className="d-flex flex-fill align-items-center justify-content-center">
-                <MailOutlined style={{ fontSize: '24px'}}/>
-              </div>
-            </div>
-          </div>
-      </div>
     </div>
   )
 }
@@ -1951,19 +2064,26 @@ function SearchResults(){
 function CreateList(){
   return(
     <div>
-      <div className="container-fluid px-0 fixedTop bg-white">
+       <div className="container-fluid px-0 fixedTop bg-white">
         <div className="container navBar">
           <div className="d-flex flex-row py-2 align-items-center justify-content-between">
             <div className="d-flex flex-row align-items-center">
               <img src={logo} className="Applogo mr-3" alt="logo" />
               <h2 className="my-0">Rankly</h2>
             </div>
+            <div className="d-none d-lg-flex flex-grow-1">
+              <Search className="px-5" placeholder="input search text" />
+            </div>
             <div className="d-flex flex-row align-items-center">
-              <SearchOutlined style={{ fontSize: '24px'}} className="mr-4"/>
-              <BellOutlined style={{ fontSize: '24px'}} className="mr-4"/>
+              <SearchOutlined style={{ fontSize: '24px'}} className="d-lg-none mr-4 mr-lg-5"/>
+              <HeartOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <img src={bookmark} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <MailOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <BellOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5"/>
               <div className="navAvatarImgWrap">
                 <img src={avatar} className="navAvatarImg"/>
               </div>
+              <Button type="primary" className="ml-4 d-none d-lg-block">Create Post</Button>
             </div>
           </div>
         </div>
@@ -2000,8 +2120,7 @@ function CreateList(){
           </div>
         </div>
       </div>
-
-      <div className="container-fluid px-0 fixedBottom bg-white">
+      <div className="container-fluid px-0 fixedBottom bg-white d-lg-none">
         <Divider className="my-0"/>
           <div className="container navBar">
             <div className="d-flex flex-row py-3">
@@ -2037,12 +2156,19 @@ function ListInitial() {
               <img src={logo} className="Applogo mr-3" alt="logo" />
               <h2 className="my-0">Rankly</h2>
             </div>
+            <div className="d-none d-lg-flex flex-grow-1">
+              <Search className="px-5" placeholder="input search text" />
+            </div>
             <div className="d-flex flex-row align-items-center">
-              <SearchOutlined style={{ fontSize: '24px'}} className="mr-4"/>
-              <BellOutlined style={{ fontSize: '24px'}} className="mr-4"/>
+              <SearchOutlined style={{ fontSize: '24px'}} className="d-lg-none mr-4 mr-lg-5"/>
+              <HeartOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <img src={bookmark} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <MailOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <BellOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5"/>
               <div className="navAvatarImgWrap">
                 <img src={avatar} className="navAvatarImg"/>
               </div>
+              <Button type="primary" className="ml-4 d-none d-lg-block">Create Post</Button>
             </div>
           </div>
         </div>
@@ -2081,8 +2207,7 @@ function ListInitial() {
           </div>
         </div>
       </div>
-
-      <div className="container-fluid px-0 fixedBottom bg-white">
+      <div className="container-fluid px-0 fixedBottom bg-white d-lg-none">
         <Divider className="my-0"/>
           <div className="container navBar">
             <div className="d-flex flex-row py-3">
@@ -2127,17 +2252,17 @@ function CreateListItem() {
         </div>
         <Divider className="my-0"/>
       </div>
-      <div className="container-fluid createListItem">
+      <div className="container createListItem">
         <div className="row">
           <div className="col-12 px-0 createListItemWrap d-flex flex-column">
             <div>
-              <div className="col-12 px-sm-0">
+              <div className="col-12 px-0">
                 <Input placeholder="Item name" className="border-left-0  border-right-0 border-top-0 lineInput" style={{borderRadius:'0px', height:'48px'}}/>
               </div>
-              <div className="col-12 px-sm-0">
+              <div className="col-12 px-0">
                 <Input placeholder="Add URL" className="border-left-0  border-right-0 border-top-0 lineInput" style={{borderRadius:'0px', height:'48px'}}/>
               </div>
-              <div className="col-12 px-sm-0 inputLG border-x-0">
+              <div className="col-12 px-0 inputLG border-x-0">
                 <Select defaultValue="No Button" style={{ width: '100%', height:'48px' }} className="border-left-0 border-right-0">
                   <Option value="jack">Apply Now</Option>
                   <Option value="lucy">Book Now</Option>
@@ -2145,7 +2270,7 @@ function CreateListItem() {
               </div>
             </div>
             <div className="listDescription">
-              <div className="col-12 px-sm-0" style={{height:"100%"}}>
+              <div className="col-12 px-0" style={{height:"100%"}}>
                 <TextArea style={{height:"100%"}} className="border-left-0  border-right-0 border-top-0 lineInput" placeholder="List details" />
               </div>
             </div>
@@ -2166,18 +2291,24 @@ function ListCreated() {
               <img src={logo} className="Applogo mr-3" alt="logo" />
               <h2 className="my-0">Rankly</h2>
             </div>
+            <div className="d-none d-lg-flex flex-grow-1">
+              <Search className="px-5" placeholder="input search text" />
+            </div>
             <div className="d-flex flex-row align-items-center">
-              <SearchOutlined style={{ fontSize: '24px'}} className="mr-4"/>
-              <BellOutlined style={{ fontSize: '24px'}} className="mr-4"/>
+              <SearchOutlined style={{ fontSize: '24px'}} className="d-lg-none mr-4 mr-lg-5"/>
+              <HeartOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <img src={bookmark} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <MailOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <BellOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5"/>
               <div className="navAvatarImgWrap">
                 <img src={avatar} className="navAvatarImg"/>
               </div>
+              <Button type="primary" className="ml-4 d-none d-lg-block">Create Post</Button>
             </div>
           </div>
         </div>
         <Divider className="my-0"/>
       </div>
-
       <div className="container listInitial">
         <div className="row">
           <div className="col-12 px-0">
@@ -2231,8 +2362,7 @@ function ListCreated() {
           </div>
         </div>
       </div>
-
-      <div className="container-fluid px-0 fixedBottom bg-white">
+      <div className="container-fluid px-0 fixedBottom bg-white d-lg-none">
         <Divider className="my-0"/>
           <div className="container navBar">
             <div className="d-flex flex-row py-3">
@@ -2268,12 +2398,19 @@ function Notifications() {
               <img src={logo} className="Applogo mr-3" alt="logo" />
               <h2 className="my-0">Rankly</h2>
             </div>
+            <div className="d-none d-lg-flex flex-grow-1">
+              <Search className="px-5" placeholder="input search text" />
+            </div>
             <div className="d-flex flex-row align-items-center">
-              <SearchOutlined style={{ fontSize: '24px'}} className="mr-4"/>
-              <BellOutlined style={{ fontSize: '24px'}} className="mr-4"/>
+              <SearchOutlined style={{ fontSize: '24px'}} className="d-lg-none mr-4 mr-lg-5"/>
+              <HeartOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <img src={bookmark} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <MailOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <BellOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5"/>
               <div className="navAvatarImgWrap">
                 <img src={avatar} className="navAvatarImg"/>
               </div>
+              <Button type="primary" className="ml-4 d-none d-lg-block">Create Post</Button>
             </div>
           </div>
         </div>
@@ -2325,7 +2462,7 @@ function Notifications() {
           </div>
         </div>
       </div>
-      <div className="container-fluid px-0 fixedBottom bg-white">
+      <div className="container-fluid px-0 fixedBottom bg-white d-lg-none">
         <Divider className="my-0"/>
           <div className="container navBar">
             <div className="d-flex flex-row py-3">
@@ -2361,12 +2498,19 @@ function SquadRequest() {
               <img src={logo} className="Applogo mr-3" alt="logo" />
               <h2 className="my-0">Rankly</h2>
             </div>
+            <div className="d-none d-lg-flex flex-grow-1">
+              <Search className="px-5" placeholder="input search text" />
+            </div>
             <div className="d-flex flex-row align-items-center">
-              <SearchOutlined style={{ fontSize: '24px'}} className="mr-4"/>
-              <BellOutlined style={{ fontSize: '24px'}} className="mr-4"/>
+              <SearchOutlined style={{ fontSize: '24px'}} className="d-lg-none mr-4 mr-lg-5"/>
+              <HeartOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <img src={bookmark} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <MailOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <BellOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5"/>
               <div className="navAvatarImgWrap">
                 <img src={avatar} className="navAvatarImg"/>
               </div>
+              <Button type="primary" className="ml-4 d-none d-lg-block">Create Post</Button>
             </div>
           </div>
         </div>
@@ -2407,7 +2551,7 @@ function SquadRequest() {
           </div>
         </div>
       </div>
-      <div className="container-fluid px-0 fixedBottom bg-white">
+      <div className="container-fluid px-0 fixedBottom bg-white d-lg-none">
         <Divider className="my-0"/>
           <div className="container navBar">
             <div className="d-flex flex-row py-3">
@@ -2437,11 +2581,25 @@ function MessageBody() {
   return(
     <div>
       <div className="container-fluid px-0 fixedTop bg-white">
-        <div className="container navBar py-2">
+        <div className="container navBar">
           <div className="d-flex flex-row py-2 align-items-center justify-content-between">
             <div className="d-flex flex-row align-items-center">
-              <ArrowLeftOutlined style={{ fontSize: '24px'}}/>
-              <Title level={5} className="ml-3 mb-0">Mark Bergman</Title>
+              <img src={logo} className="Applogo mr-3" alt="logo" />
+              <h2 className="my-0">Rankly</h2>
+            </div>
+            <div className="d-none d-lg-flex flex-grow-1">
+              <Search className="px-5" placeholder="input search text" />
+            </div>
+            <div className="d-flex flex-row align-items-center">
+              <SearchOutlined style={{ fontSize: '24px'}} className="d-lg-none mr-4 mr-lg-5"/>
+              <HeartOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <img src={bookmark} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <MailOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <BellOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5"/>
+              <div className="navAvatarImgWrap">
+                <img src={avatar} className="navAvatarImg"/>
+              </div>
+              <Button type="primary" className="ml-4 d-none d-lg-block">Create Post</Button>
             </div>
           </div>
         </div>
