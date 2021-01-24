@@ -13,6 +13,7 @@ import logo from './assets/img/logoPlaceholder.png';
 import avatar from './assets/img/avatar.png';
 import ad1 from './assets/img/ad-1.png';
 import bookmark from './assets/img/bookmark.svg';
+import move from './assets/img/move.svg';
 import facebook from './assets/img/facebook.svg';
 import google from './assets/img/google.svg';
 import users from "./users-data";
@@ -2355,7 +2356,7 @@ function ListCreated() {
                   </div>
                 </div>
                 <div>
-                  <MoreOutlined />
+                  <img src={move}/>
                 </div>
               </div>
               <Divider className="my-0"/>
