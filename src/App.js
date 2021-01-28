@@ -7,8 +7,8 @@ import {
 } from "react-router-dom";
 import './utility.less';
 import './App.less';
-import { Affix,Breadcrumb,Button,Divider,Form,Input,Select,Upload,message,Card,Typography,Dropdown,Menu,Image,Radio,Checkbox,Tabs,Modal } from 'antd';
-import { CaretDownOutlined,CaretUpOutlined,CopyOutlined,SendOutlined,DeleteOutlined,CheckOutlined,UploadOutlined,ArrowLeftOutlined,EditOutlined,ArrowRightOutlined,CloseOutlined,LogoutOutlined,QuestionCircleOutlined,SafetyOutlined,LockOutlined,ToolOutlined,PlusOutlined,MoreOutlined,HeartOutlined,MessageOutlined,ShareAltOutlined,SearchOutlined,BellOutlined,HomeOutlined,FileAddOutlined,MailOutlined,UpOutlined,DownOutlined,AppstoreOutlined,UnorderedListOutlined,FilterOutlined,HeartFilled } from '@ant-design/icons';
+import { Badge,Tag,Affix,Breadcrumb,Button,Divider,Form,Input,Select,Upload,message,Card,Typography,Dropdown,Menu,Image,Radio,Checkbox,Tabs,Modal } from 'antd';
+import { RiseOutlined,CaretDownOutlined,CaretUpOutlined,CopyOutlined,SendOutlined,DeleteOutlined,CheckOutlined,UploadOutlined,ArrowLeftOutlined,EditOutlined,ArrowRightOutlined,CloseOutlined,LogoutOutlined,QuestionCircleOutlined,SafetyOutlined,LockOutlined,ToolOutlined,PlusOutlined,MoreOutlined,HeartOutlined,MessageOutlined,ShareAltOutlined,SearchOutlined,BellOutlined,HomeOutlined,FileAddOutlined,MailOutlined,UpOutlined,DownOutlined,AppstoreOutlined,UnorderedListOutlined,FilterOutlined,HeartFilled } from '@ant-design/icons';
 import logo from './assets/img/logoPlaceholder.png';
 import avatar from './assets/img/avatar.png';
 import ad1 from './assets/img/ad-1.png';
@@ -46,6 +46,12 @@ export default function BasicExample() {
   return (
   <Router>
     <Switch>
+      <Route path="/squadpagedetails">
+        <SquadPageDetails />
+      </Route>
+      <Route path="/squadpage">
+        <SquadPage />
+      </Route>
       <Route path="/messagebody">
         <MessageBody />
       </Route>
@@ -478,6 +484,7 @@ const ListFeed = () => {
               <img src={bookmark} className="mr-4 mr-lg-5 d-none d-lg-block"/>
               <MailOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5 d-none d-lg-block"/>
               <BellOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5"/>
+              
               <div className="navAvatarImgWrap">
                 <img src={avatar} className="navAvatarImg"/>
               </div>
@@ -494,10 +501,10 @@ const ListFeed = () => {
             {users.map((user, index) => (
               <div key={index} className="col-12 px-0 listFeedCard mb-3">
                 <Card>
-                  <div className="cardHead">
+                  <div className="cardHead d-flex flex-row align-items-center justify-content-between">
                     <div className="cardHeadLeft d-flex flex-row align-items-center">
-                      <div className="avatarWrap">
-                        <img src={user.avatarImg} className="cardImg"/>
+                      <div className="avatarWrap" style={{ width:'40px', height:'40px', overflow:'hidden', borderRadius:'50%'}}>
+                        <img src={user.avatarImg} className="cardImg w-100 h-auto"/>
                       </div>
                       <div className="d-flex flex-column ml-2">
                         <Text type="primary">{user.name}</Text>
@@ -524,22 +531,22 @@ const ListFeed = () => {
                         </div>
                       </div>
                     </Link>
-                  <div className="cardExpert py-2">
+                  <div className="cardExpert d-flex flex-row align-items-center justify-content-between py-2">
                     <div className="cardExpertLeft">
-                      <div className="facepile">
-                        <div className="cardImgWrap">
-                          <img src="https://tinyurl.com/y44o75ox" className="cardImg"/>
+                      <div className="facepile d-flex flex-row">
+                        <div className="cardImgWrap rounded-circle">
+                          <img src="https://tinyurl.com/y44o75ox" className="cardImg w-100 h-auto"/>
                         </div>
                         <div className="cardImgWrap">
-                          <img src="https://tinyurl.com/y6oe9zfe" className="cardImg"/>
+                          <img src="https://tinyurl.com/y6oe9zfe" className="cardImg w-100 h-auto"/>
                         </div>
                         <div className="cardImgWrap">
-                          <img src="https://tinyurl.com/yyktos3r" className="cardImg"/>
+                          <img src="https://tinyurl.com/yyktos3r" className="cardImg w-100 h-auto"/>
                         </div>
                         <div className="cardImgWrap">
-                          <img src="https://tinyurl.com/y4fr59zm" className="cardImg"/>
+                          <img src="https://tinyurl.com/y4fr59zm" className="cardImg w-100 h-auto"/>
                         </div>
-                        <div className="cardImgWrap">
+                        <div className="cardImgWrap d-flex align-items-center justify-content-center">
                           <span>+7</span>
                         </div>
                       </div>
@@ -548,8 +555,8 @@ const ListFeed = () => {
                       <Text type="secondary">3 days ago</Text>
                     </div>
                   </div>
-                  <div className="cardAction pt-2">
-                    <div className="cardActionLeft">
+                  <div className="cardAction d-flex flex-row align-items-center justify-content-between pt-2">
+                    <div className="cardActionLeft d-flex flex-row">
                       <span className="d-flex flex-row align-items-center justify-content-center mr-4">
                         <HeartOutlined style={{ fontSize: '24px'}}/>
                         <Text className="ml-2">12</Text>
@@ -562,7 +569,7 @@ const ListFeed = () => {
                         <ShareAltOutlined style={{ fontSize: '24px'}} onClick={showModal3}/>
                       </span>
                     </div>
-                    <div className="cardActionRight" onClick={showModal}>
+                    <div className="cardActionRight" onClick={showModal} style={{cursor: 'pointer'}}>
                       <img src={bookmark}/>
                     </div>
                   </div>
@@ -630,7 +637,7 @@ const ListFeed = () => {
             ))}
           </div>
           <div className="d-none d-lg-block col-lg-4  sideMenuLg">
-            <img src={ad1} style={{width:'100%', height:'auto'}} className="mb-3"/>
+            <img src={ad1} className="mb-3 w-100 h-auto"/>
             {users.map((user, index) => (
                 <div key={index} className="col-12 px-0 listFeedCard mb-3">
                   <Card>
@@ -648,7 +655,7 @@ const ListFeed = () => {
                     </div>
                     <div className="cardExpert py-2">
                       <div className="cardExpertLeft">
-                        <div className="facepile">
+                        <div className="facepile d-flex flex-row">
                           <div className="cardImgWrap">
                             <img src="https://tinyurl.com/y44o75ox" className="cardImg"/>
                           </div>
@@ -661,7 +668,7 @@ const ListFeed = () => {
                           <div className="cardImgWrap">
                             <img src="https://tinyurl.com/y4fr59zm" className="cardImg"/>
                           </div>
-                          <div className="cardImgWrap">
+                          <div className="cardImgWrap d-flex align-items-center justify-content-center">
                             <span>+7</span>
                           </div>
                         </div>
@@ -837,7 +844,7 @@ const ListDetails = () =>{
             <div className="detailsHead">
               <div className="detailsHeadLeft d-flex flex-row">
                 <div className="detailsHeadImgWrap flex-shrink-0">
-                  <img src={avatar} className="cardImg" />
+                  <img src={avatar} className="cardImg" style={{width:'100%', height:'auto'}}/>
                 </div>
                 <div className="d-flex flex-column ml-2">
                   <Title level={4} className="mb-0">The best wireless headphones you can buy in 2020 so far</Title>
@@ -877,20 +884,20 @@ const ListDetails = () =>{
                   />
                 </div>
               </div>
-              <div className="cardExpert py-2">
+              <div className="cardExpert d-flex flex-row align-items-center justify-content-between py-2">
                 <div className="cardExpertLeft">
-                  <div className="facepile">
-                    <div className="cardImgWrap">
+                  <div className="facepile d-flex flex-row">
+                    <div className="cardImgWrap d-flex align-items-center justify-content-center">
                       <img src="https://tinyurl.com/y44o75ox" className="cardImg"/>
                     </div>
                     <div className="cardImgWrap">
-                      <img src="https://tinyurl.com/y6oe9zfe" className="cardImg"/>
+                      <img src="https://tinyurl.com/y6oe9zfe" className="cardImg" style={{width:'100%', height:'auto'}}/>
                     </div>
                     <div className="cardImgWrap">
-                      <img src="https://tinyurl.com/yyktos3r" className="cardImg"/>
+                      <img src="https://tinyurl.com/yyktos3r" className="cardImg" style={{width:'100%', height:'auto'}}/>
                     </div>
                     <div className="cardImgWrap">
-                      <img src="https://tinyurl.com/y4fr59zm" className="cardImg"/>
+                      <img src="https://tinyurl.com/y4fr59zm" className="cardImg" style={{width:'100%', height:'auto'}}/>
                     </div>
                     <div className="cardImgWrap">
                       <span>+7</span>
@@ -901,7 +908,7 @@ const ListDetails = () =>{
                   <Button>Order Now</Button>
                 </div>
               </div>
-              <div className="cardAction flex-wrap">
+              <div className="cardAction flex-wrap d-flex flex-row align-items-center justify-content-between">
                 <div className="cardActionRight pt-2">
                   <div className="d-flex flex-row align-items-center cardActionRightInner">
                     <Button type="primary" icon={<UpOutlined />} />
@@ -911,19 +918,19 @@ const ListDetails = () =>{
                     <Button type="primary" icon={<DownOutlined />} />
                   </div>
                 </div>
-                <div className="cardActionLeft pt-2">
-                  <span className="d-flex flex-row align-items-center justify-content-center mr-3">
+                <div className="cardActionLeft pt-2 d-flex flex-row">
+                  <span className="d-flex flex-row align-items-center justify-content-center mr-3" style={{cursor:'pointer'}}>
                     <HeartOutlined style={{ fontSize: '24px'}}/>
                     <Text className="ml-2">12</Text>
                   </span>
-                  <span className="d-flex flex-row align-items-center justify-content-center mr-3">
+                  <span className="d-flex flex-row align-items-center justify-content-center mr-3" style={{cursor:'pointer'}}>>
                     <MessageOutlined  style={{ fontSize: '24px'}}/>
                     <Text className="ml-2">12</Text>
                   </span>
-                  <span className="d-flex flex-row align-items-center justify-content-center mr-3">
+                  <span className="d-flex flex-row align-items-center justify-content-center mr-3" style={{cursor:'pointer'}}>>
                     <ShareAltOutlined style={{ fontSize: '24px'}}/>
                   </span>
-                  <span className="d-flex flex-row align-items-center justify-content-center" onClick={showModal}>
+                  <span className="d-flex flex-row align-items-center justify-content-center" onClick={showModal} style={{cursor:'pointer'}}>>
                     <img src={bookmark}/>
                   </span>
                 </div>
@@ -1523,8 +1530,11 @@ const MyProfile = () => {
                       </div>
                       <div className="d-flex flex-column ml-2">
                         <Text type="primary" strong>Musicaly</Text>
-                        <span className="d-flex flex-row">
+                        <span className="d-flex flex-column">
                           <Text type="secondary" className="mr-3">For music enthusiasts</Text>
+                          <div>
+                            <Tag color="#87d068">Admin</Tag>
+                          </div>
                         </span>
                       </div>
                     </div>
@@ -2540,6 +2550,7 @@ function SquadRequest() {
                 <div className="d-flex flex-column ml-3">
                   <Text type="primary">Robert Murphy</Text>
                   <span className="d-flex flex-row">
+                    <Tag color="#87d068">Member</Tag>
                     <Text type="secondary" className="mr-3">Expert Musician</Text>
                   </span>
                 </div>
@@ -2645,6 +2656,222 @@ function MessageBody() {
             <SendOutlined style={{ fontSize: '18px'}}/>
           </a>
         </div>
+      </div>
+    </div>
+  )
+}
+
+function SquadPage() {
+  return(
+    <div>
+      <div className="container-fluid px-0 fixedTop bg-white">
+        <div className="container navBar">
+          <div className="d-flex flex-row py-2 align-items-center justify-content-between">
+            <div className="d-flex flex-row align-items-center">
+              <img src={logo} className="Applogo mr-3" alt="logo" />
+              <h2 className="my-0">Rankly</h2>
+            </div>
+            <div className="d-none d-lg-flex flex-grow-1">
+              <Search className="px-5" placeholder="input search text" />
+            </div>
+            <div className="d-flex flex-row align-items-center">
+              <SearchOutlined style={{ fontSize: '24px'}} className="d-lg-none mr-4 mr-lg-5"/>
+              <HeartOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <img src={bookmark} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <MailOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <BellOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5"/>
+              <div className="navAvatarImgWrap">
+                <img src={avatar} className="navAvatarImg"/>
+              </div>
+              <Button type="primary" className="ml-4 d-none d-lg-block">Create Post</Button>
+            </div>
+          </div>
+        </div>
+        <Divider className="my-0"/>
+      </div>
+
+      <div className="container squadPage">
+        <div className="row">
+          <div className="col-12 px-0">
+            <Tabs defaultActiveKey="1">
+              <TabPane tab="My Squads" key="1">
+                <div className="col-12 px-0">
+                  <div className="d-flex flex-row detailsSecondaryCard px-3 py-3">
+                    <div className="cardBodyImgWrap flex-shrink-0">
+                      <Image
+                      width={'100%'}
+                      src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                      />
+                    </div>
+                    <div className="d-flex flex-column ml-2">
+                      <Text type="primary" strong>Musicaly</Text>
+                      <span className="d-flex flex-column">
+                        <Text type="secondary" className="mr-3">For music enthusiasts</Text>
+                        <div>
+                          <Tag color="#87d068">Admin</Tag>
+                        </div>
+                      </span>
+                    </div>
+                  </div>
+                  <Divider className="my-0"/>
+                </div>
+              </TabPane>
+              <TabPane tab="Other Squads" key="2">
+                <div className="col-12 px-0">
+                  <div className="d-flex flex-row detailsSecondaryCard px-3 py-3">
+                    <div className="cardBodyImgWrap flex-shrink-0">
+                      <Image
+                      width={'100%'}
+                      src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                      />
+                    </div>
+                    <div className="d-flex flex-column ml-2">
+                      <Text type="primary" strong>Musicaly</Text>
+                      <span className="d-flex flex-column">
+                        <Text type="secondary" className="mr-3">For music enthusiasts</Text>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </TabPane>
+            </Tabs>
+          </div>
+        </div>
+      </div>
+
+      <div className="container-fluid px-0 fixedBottom bg-white d-lg-none">
+        <Divider className="my-0"/>
+          <div className="container navBar">
+            <div className="d-flex flex-row py-3">
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <HomeOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex align-items-center flex-fill align-items-center justify-content-center">
+                <HeartOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <FileAddOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+              <img src={bookmark}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <MailOutlined style={{ fontSize: '24px'}}/>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  )
+}
+
+function SquadPageDetails() {
+  return(
+    <div>
+      <div className="container-fluid px-0 fixedTop bg-white">
+        <div className="container navBar py-2">
+          <div className="d-flex flex-row py-2 align-items-center justify-content-between">
+            <div className="d-flex flex-row align-items-center">
+              <ArrowLeftOutlined style={{ fontSize: '24px'}}/>
+              <Title level={5} className="ml-3 mb-0">Musicaly</Title>
+            </div>
+          </div>
+        </div>
+        <Divider className="my-0"/>
+      </div>
+      <div className="container squadDetails">
+        <div className="row">
+          <div className="col-12 px-0">
+            <div className="d-flex flex-row detailsSecondaryCard px-3 py-3">
+              <div className="cardBodyImgWrap flex-shrink-0">
+                <Image
+                width={'100%'}
+                src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                />
+              </div>
+              <div className="d-flex flex-column ml-2">
+                <Text type="primary" strong>Musicaly</Text>
+                <span className="d-flex flex-column">
+                  <Text type="secondary" className="mr-3">For music enthusiasts</Text>
+                  <div>
+                    <Tag color="#87d068">Admin</Tag>
+                  </div>
+                </span>
+              </div>
+            </div>
+            <Divider className="my-0"/>
+          </div>  
+        </div>
+      </div>
+      <div className="container squadDetailsSecondary">
+        <div className="row">
+          <div className="col-12 px-0">
+          <Tabs defaultActiveKey="1">
+            <TabPane tab="Members" key="1">
+            <div className="col-12 px-0">
+              <div className="d-flex flex-row detailsSecondaryCard px-3 py-3">
+                <div className="cardBodyImgWrap flex-shrink-0">
+                  <Image
+                  width={'100%'}
+                  src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                  />
+                </div>
+                <div className="d-flex flex-column ml-3">
+                  <Text type="primary">Boy Pablo</Text>
+                  <span className="d-flex flex-row align-items-center">
+                    <Text type="secondary"><RiseOutlined/></Text><Text className="ml-2" type="secondary">Contribution 10</Text>
+                  </span>
+                </div>
+              </div>
+              <Divider className="my-0"/>
+            </div>
+            </TabPane>
+            <TabPane tab="Activities" key="2">
+              <div className="col-12 px-0">
+                <div className="d-flex flex-row detailsSecondaryCard px-3 py-3">
+                  <div className="cardBodyImgWrap flex-shrink-0">
+                    <Image
+                    width={'100%'}
+                    src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                    />
+                  </div>
+                  <div className="d-flex flex-column ml-3">
+                    <div className="d-flex flex-row">
+                      <Text type="primary"><strong>Boy Pablo</strong> ranked</Text><Link className="ml-2">best headphones 2020 list.</Link> 
+                    </div>
+                    <span className="d-flex flex-row">
+                      <Text type="secondary" className="mr-3">Yesterday at 8:09 AM</Text>
+                    </span>
+                  </div>
+                </div>
+                <Divider className="my-0"/>
+              </div>
+            </TabPane>
+            </Tabs>
+          </div>
+        </div>
+      </div>
+      <div className="container-fluid px-0 fixedBottom bg-white d-lg-none">
+        <Divider className="my-0"/>
+          <div className="container navBar">
+            <div className="d-flex flex-row py-3">
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <HomeOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex align-items-center flex-fill align-items-center justify-content-center">
+                <HeartOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <FileAddOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+              <img src={bookmark}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <MailOutlined style={{ fontSize: '24px'}}/>
+              </div>
+            </div>
+          </div>
       </div>
     </div>
   )
