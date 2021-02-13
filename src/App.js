@@ -140,7 +140,7 @@ function Signup() {
           </div>
         <Divider className="my-0"/>
       </div>
-      <div className="container h-100 d-flex flex-column signupContainer">
+      <div className="container d-flex flex-column signupContainer">
           <div className="row h-100">
             <div className="d-none d-sm-none d-md-flex col-md-6 col-lg-6 h-100 overflow-hidden align-items-center justify-content-center">
               <Image
@@ -206,7 +206,7 @@ function Signup2(){
           </div>
         <Divider className="my-0"/>
       </div>
-      <div className="container h-100 d-flex flex-column justify-content-center signupContainer">
+      <div className="container d-flex flex-column justify-content-center signupContainer">
           <div className="row h-100">
             <div className="d-none d-sm-none d-md-flex col-md-6 col-lg-6 h-100 overflow-hidden align-items-center justify-content-center">
                 <Image
@@ -300,7 +300,7 @@ function Signup3(){
           </div>
         <Divider className="my-0"/>
       </div>
-      <div className="container h-100 d-flex flex-column justify-content-center signupContainer">
+      <div className="container d-flex flex-column justify-content-center signupContainer">
         <div className="row h-100">
         <div className="d-none d-sm-none d-md-flex col-md-6 col-lg-6 h-100 overflow-hidden align-items-center justify-content-center">
         <Image
@@ -923,14 +923,14 @@ const ListDetails = () =>{
                     <HeartOutlined style={{ fontSize: '24px'}}/>
                     <Text className="ml-2">12</Text>
                   </span>
-                  <span className="d-flex flex-row align-items-center justify-content-center mr-3" style={{cursor:'pointer'}}>>
+                  <span className="d-flex flex-row align-items-center justify-content-center mr-3" style={{cursor:'pointer'}}>
                     <MessageOutlined  style={{ fontSize: '24px'}}/>
                     <Text className="ml-2">12</Text>
                   </span>
-                  <span className="d-flex flex-row align-items-center justify-content-center mr-3" style={{cursor:'pointer'}}>>
+                  <span className="d-flex flex-row align-items-center justify-content-center mr-3" style={{cursor:'pointer'}}>
                     <ShareAltOutlined style={{ fontSize: '24px'}}/>
                   </span>
-                  <span className="d-flex flex-row align-items-center justify-content-center" onClick={showModal} style={{cursor:'pointer'}}>>
+                  <span className="d-flex flex-row align-items-center justify-content-center" onClick={showModal} style={{cursor:'pointer'}}>
                     <img src={bookmark}/>
                   </span>
                 </div>
@@ -2186,7 +2186,7 @@ function ListInitial() {
         <Divider className="my-0"/>
       </div>
 
-      <div className="container listInitial">
+      <div className="container listInitial position-relative">
         <div className="row">
           <div className="col-12 px-0">
               <div className="d-flex flex-row detailsSecondaryCard mb-2 px-3 py-3 justify-content-between">
@@ -2320,7 +2320,7 @@ function ListCreated() {
         </div>
         <Divider className="my-0"/>
       </div>
-      <div className="container listInitial">
+      <div className="container listInitial position-relative">
         <div className="row">
           <div className="col-12 px-0">
               <div className="d-flex flex-row detailsSecondaryCard px-3 py-3 justify-content-between">
@@ -2372,6 +2372,7 @@ function ListCreated() {
               <Divider className="my-0"/>
           </div>
         </div>
+        <Button type="primary" shape="circle" icon={<PlusOutlined />} style={{width: '48px',height: '48px', position:'absolute', bottom:'64px',right:'0px'}}/>
       </div>
       <div className="container-fluid px-0 fixedBottom bg-white d-lg-none">
         <Divider className="my-0"/>
