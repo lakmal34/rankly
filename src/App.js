@@ -155,11 +155,11 @@ function Signup() {
                 <p>By continuing, you agree to our <Link to="">User Agrement</Link> and <Link to="">Privacy Policy</Link>.</p>
               </div>
               <div className="mt-4 px-0">
-                <Button type="primary" ghost className="d-flex flex-row align-items-center w-100 mb-2">
+                <Button className="d-flex flex-row align-items-center w-100 mb-2">
                   <span className="mr-3"><img src={google} style={{ width: '18px'}}/></span>
                   <span>CONTINUE WITH GOOGLE</span>
                 </Button>
-                <Button type="primary" ghost className="d-flex flex-row align-items-center w-100">
+                <Button className="d-flex flex-row align-items-center w-100">
                 <span className="mr-3"><img src={facebook} style={{ width: '18px'}}/></span>
                   <span>CONTINUE WITH FACEBOOK</span>
                 </Button>
@@ -359,7 +359,7 @@ function Login(){
           </div>
         <Divider className="my-0"/>
       </div>
-      <div className="container h-100 d-flex flex-column signupContainer">
+      <div className="container d-flex flex-column signupContainer">
           <div className="row h-100">
             <div className="d-none d-sm-none d-md-flex col-md-6 col-lg-6 h-100 overflow-hidden align-items-center justify-content-center">
               <Image
@@ -375,11 +375,11 @@ function Login(){
                 <p>By continuing, you agree to our <Link to="">User Agrement</Link> and <Link to="">Privacy Policy</Link>.</p>
               </div>
               <div className="mt-4 px-0">
-                <Button type="primary" ghost className="d-flex flex-row align-items-center w-100 mb-2">
+                <Button className="d-flex flex-row align-items-center w-100 mb-2">
                   <span className="mr-3"><img src={google} style={{ width: '18px'}}/></span>
                   <span>CONTINUE WITH GOOGLE</span>
                 </Button>
-                <Button type="primary" ghost className="d-flex flex-row align-items-center w-100">
+                <Button className="d-flex flex-row align-items-center w-100">
                 <span className="mr-3"><img src={facebook} style={{ width: '18px'}}/></span>
                   <span>CONTINUE WITH FACEBOOK</span>
                 </Button>
@@ -852,8 +852,9 @@ const ListDetails = () =>{
           </div>
           <div className="col-12">
             <div className="d-flex flex-row d-md-none d-lg-none d-xl-none mt-4 justify-content-between align-items-center">
-              <Button icon={<FilterOutlined />}>Sort & Filter</Button>
+              <Text className="mb-0" type="secondary">Published 3:10 PM EST, Thu </Text>
               <div className="d-flex flex-row">
+                <Button icon={<FilterOutlined />} className="mr-2">Sort & Filter</Button>
                 <Radio.Group>
                   <Radio.Button value="large"><AppstoreOutlined /></Radio.Button>
                   <Radio.Button value="default"><UnorderedListOutlined /></Radio.Button>
