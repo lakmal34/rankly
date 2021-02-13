@@ -9,7 +9,7 @@ import './utility.less';
 import './App.less';
 import { Badge,Tag,Affix,Breadcrumb,Button,Divider,Form,Input,Select,Upload,message,Card,Typography,Dropdown,Menu,Image,Radio,Checkbox,Tabs,Modal } from 'antd';
 import { RiseOutlined,CaretDownOutlined,CaretUpOutlined,CopyOutlined,SendOutlined,DeleteOutlined,CheckOutlined,UploadOutlined,ArrowLeftOutlined,EditOutlined,ArrowRightOutlined,CloseOutlined,LogoutOutlined,QuestionCircleOutlined,SafetyOutlined,LockOutlined,ToolOutlined,PlusOutlined,MoreOutlined,HeartOutlined,MessageOutlined,ShareAltOutlined,SearchOutlined,BellOutlined,HomeOutlined,FileAddOutlined,MailOutlined,UpOutlined,DownOutlined,AppstoreOutlined,UnorderedListOutlined,FilterOutlined,HeartFilled } from '@ant-design/icons';
-import logo from './assets/img/logoPlaceholder.png';
+import logo from './assets/img/logo.png';
 import avatar from './assets/img/avatar.png';
 import ad1 from './assets/img/ad-1.png';
 import bookmark from './assets/img/bookmark.svg';
@@ -134,7 +134,6 @@ function Signup() {
             <div className="d-flex flex-row py-2 align-items-center justify-content-between">
               <div className="d-flex flex-row align-items-center">
                 <img src={logo} className="Applogo mr-3" alt="logo" />
-                <h2 className="my-0">Rankly</h2>
               </div>
             </div>
           </div>
@@ -200,7 +199,6 @@ function Signup2(){
             <div className="d-flex flex-row py-2 align-items-center justify-content-between">
               <div className="d-flex flex-row align-items-center">
                 <img src={logo} className="Applogo mr-3" alt="logo" />
-                <h2 className="my-0">Rankly</h2>
               </div>
             </div>
           </div>
@@ -294,7 +292,6 @@ function Signup3(){
             <div className="d-flex flex-row py-2 align-items-center justify-content-between">
               <div className="d-flex flex-row align-items-center">
                 <img src={logo} className="Applogo mr-3" alt="logo" />
-                <h2 className="my-0">Rankly</h2>
               </div>
             </div>
           </div>
@@ -357,7 +354,6 @@ function Login(){
             <div className="d-flex flex-row py-2 align-items-center justify-content-between">
               <div className="d-flex flex-row align-items-center">
                 <img src={logo} className="Applogo mr-3" alt="logo" />
-                <h2 className="my-0">Rankly</h2>
               </div>
             </div>
           </div>
@@ -473,7 +469,6 @@ const ListFeed = () => {
           <div className="d-flex flex-row py-2 align-items-center justify-content-between">
             <div className="d-flex flex-row align-items-center">
               <img src={logo} className="Applogo mr-3" alt="logo" />
-              <h2 className="my-0">Rankly</h2>
             </div>
             <div className="d-none d-lg-flex flex-grow-1">
               <Search className="px-5" placeholder="input search text" />
@@ -818,7 +813,6 @@ const ListDetails = () =>{
           <div className="d-flex flex-row py-2 align-items-center justify-content-between">
             <div className="d-flex flex-row align-items-center">
               <img src={logo} className="Applogo mr-3" alt="logo" />
-              <h2 className="my-0">Rankly</h2>
             </div>
             <div className="d-none d-lg-flex flex-grow-1">
               <Search className="px-5" placeholder="input search text" />
@@ -1142,7 +1136,6 @@ function FavouriteList(){
           <div className="d-flex flex-row py-2 align-items-center justify-content-between">
             <div className="d-flex flex-row align-items-center">
               <img src={logo} className="Applogo mr-3" alt="logo" />
-              <h2 className="my-0">Rankly</h2>
             </div>
             <div className="d-none d-lg-flex flex-grow-1">
               <Search className="px-5" placeholder="input search text" />
@@ -1251,7 +1244,6 @@ function BookmarkList(){
           <div className="d-flex flex-row py-2 align-items-center justify-content-between">
             <div className="d-flex flex-row align-items-center">
               <img src={logo} className="Applogo mr-3" alt="logo" />
-              <h2 className="my-0">Rankly</h2>
             </div>
             <div className="d-none d-lg-flex flex-grow-1">
               <Search className="px-5" placeholder="input search text" />
@@ -1322,7 +1314,6 @@ function BookmarkDetails() {
           <div className="d-flex flex-row py-2 align-items-center justify-content-between">
             <div className="d-flex flex-row align-items-center">
               <img src={logo} className="Applogo mr-3" alt="logo" />
-              <h2 className="my-0">Rankly</h2>
             </div>
             <div className="d-none d-lg-flex flex-grow-1">
               <Search className="px-5" placeholder="input search text" />
@@ -1438,7 +1429,6 @@ const MyProfile = () => {
           <div className="d-flex flex-row py-2 align-items-center justify-content-between">
             <div className="d-flex flex-row align-items-center">
               <img src={logo} className="Applogo mr-3" alt="logo" />
-              <h2 className="my-0">Rankly</h2>
             </div>
             <div className="d-none d-lg-flex flex-grow-1">
               <Search className="px-5" placeholder="input search text" />
@@ -1597,7 +1587,6 @@ function MyComments(){
           <div className="d-flex flex-row py-2 align-items-center justify-content-between">
             <div className="d-flex flex-row align-items-center">
               <img src={logo} className="Applogo mr-3" alt="logo" />
-              <h2 className="my-0">Rankly</h2>
             </div>
             <div className="d-none d-lg-flex flex-grow-1">
               <Search className="px-5" placeholder="input search text" />
@@ -1703,7 +1692,6 @@ function MyFollowings(){
           <div className="d-flex flex-row py-2 align-items-center justify-content-between">
             <div className="d-flex flex-row align-items-center">
               <img src={logo} className="Applogo mr-3" alt="logo" />
-              <h2 className="my-0">Rankly</h2>
             </div>
             <div className="d-none d-lg-flex flex-grow-1">
               <Search className="px-5" placeholder="input search text" />
@@ -1809,7 +1797,6 @@ function AccountSettings(){
           <div className="d-flex flex-row py-2 align-items-center justify-content-between">
             <div className="d-flex flex-row align-items-center">
               <img src={logo} className="Applogo mr-3" alt="logo" />
-              <h2 className="my-0">Rankly</h2>
             </div>
             <div className="d-none d-lg-flex flex-grow-1">
               <Search className="px-5" placeholder="input search text" />
@@ -1917,7 +1904,6 @@ function MyMessages(){
           <div className="d-flex flex-row py-2 align-items-center justify-content-between">
             <div className="d-flex flex-row align-items-center">
               <img src={logo} className="Applogo mr-3" alt="logo" />
-              <h2 className="my-0">Rankly</h2>
             </div>
             <div className="d-none d-lg-flex flex-grow-1">
               <Search className="px-5" placeholder="input search text" />
@@ -2080,7 +2066,6 @@ function CreateList(){
           <div className="d-flex flex-row py-2 align-items-center justify-content-between">
             <div className="d-flex flex-row align-items-center">
               <img src={logo} className="Applogo mr-3" alt="logo" />
-              <h2 className="my-0">Rankly</h2>
             </div>
             <div className="d-none d-lg-flex flex-grow-1">
               <Search className="px-5" placeholder="input search text" />
@@ -2165,7 +2150,6 @@ function ListInitial() {
           <div className="d-flex flex-row py-2 align-items-center justify-content-between">
             <div className="d-flex flex-row align-items-center">
               <img src={logo} className="Applogo mr-3" alt="logo" />
-              <h2 className="my-0">Rankly</h2>
             </div>
             <div className="d-none d-lg-flex flex-grow-1">
               <Search className="px-5" placeholder="input search text" />
@@ -2300,7 +2284,6 @@ function ListCreated() {
           <div className="d-flex flex-row py-2 align-items-center justify-content-between">
             <div className="d-flex flex-row align-items-center">
               <img src={logo} className="Applogo mr-3" alt="logo" />
-              <h2 className="my-0">Rankly</h2>
             </div>
             <div className="d-none d-lg-flex flex-grow-1">
               <Search className="px-5" placeholder="input search text" />
@@ -2408,7 +2391,6 @@ function Notifications() {
           <div className="d-flex flex-row py-2 align-items-center justify-content-between">
             <div className="d-flex flex-row align-items-center">
               <img src={logo} className="Applogo mr-3" alt="logo" />
-              <h2 className="my-0">Rankly</h2>
             </div>
             <div className="d-none d-lg-flex flex-grow-1">
               <Search className="px-5" placeholder="input search text" />
@@ -2508,7 +2490,6 @@ function SquadRequest() {
           <div className="d-flex flex-row py-2 align-items-center justify-content-between">
             <div className="d-flex flex-row align-items-center">
               <img src={logo} className="Applogo mr-3" alt="logo" />
-              <h2 className="my-0">Rankly</h2>
             </div>
             <div className="d-none d-lg-flex flex-grow-1">
               <Search className="px-5" placeholder="input search text" />
@@ -2598,7 +2579,6 @@ function MessageBody() {
           <div className="d-flex flex-row py-2 align-items-center justify-content-between">
             <div className="d-flex flex-row align-items-center">
               <img src={logo} className="Applogo mr-3" alt="logo" />
-              <h2 className="my-0">Rankly</h2>
             </div>
             <div className="d-none d-lg-flex flex-grow-1">
               <Search className="px-5" placeholder="input search text" />
@@ -2670,7 +2650,6 @@ function SquadPage() {
           <div className="d-flex flex-row py-2 align-items-center justify-content-between">
             <div className="d-flex flex-row align-items-center">
               <img src={logo} className="Applogo mr-3" alt="logo" />
-              <h2 className="my-0">Rankly</h2>
             </div>
             <div className="d-none d-lg-flex flex-grow-1">
               <Search className="px-5" placeholder="input search text" />
