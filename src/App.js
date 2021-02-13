@@ -141,12 +141,13 @@ function Signup() {
       </div>
       <div className="container d-flex flex-column signupContainer">
           <div className="row h-100">
-            <div className="d-none d-sm-none d-md-flex col-md-6 col-lg-6 h-100 overflow-hidden align-items-center justify-content-center">
+            <div className="d-none d-sm-none d-md-flex col-md-6 col-lg-6 h-100 overflow-hidden align-items-center justify-content-center position-relative">
               <Image
                 preview={false}
                 width={'100%'}
-                src="https://tinyurl.com/y2gh67jy"
+                src="https://tinyurl.com/y6jtp4qn"
               />
+              {/* <div style={{ width:'100%', height:'100%', backgroundColor:'#000',position:'absolute',top:'0px',left:'0px',opacity:'0.5'}}></div> */}
             </div>
             <div className="col-md-6 col-lg-6 h-100">
               <div className="d-flex flex-column justify-content-center h-100">
@@ -210,7 +211,7 @@ function Signup2(){
                 <Image
                   preview={false}
                   width={'100%'}
-                  src="https://tinyurl.com/y2gh67jy"
+                  src="https://tinyurl.com/y6jtp4qn"
                 />
               </div>
             <div className="col-md-6 col-lg-6 h-100">
@@ -303,7 +304,7 @@ function Signup3(){
         <Image
         preview={false}
         width={'100%'}
-        src="https://tinyurl.com/y2gh67jy"
+        src="https://tinyurl.com/y6jtp4qn"
         />
         </div>
           <div className="col-md-6 col-lg-6 h-100">
@@ -365,7 +366,7 @@ function Login(){
               <Image
                 preview={false}
                 width={'100%'}
-                src="https://tinyurl.com/y2gh67jy"
+                src="https://tinyurl.com/y6jtp4qn"
               />
             </div>
             <div className="col-md-6 col-lg-6 h-100">
