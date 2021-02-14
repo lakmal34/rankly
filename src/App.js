@@ -7,8 +7,8 @@ import {
 } from "react-router-dom";
 import './utility.less';
 import './App.less';
-import { Badge,Tag,Affix,Breadcrumb,Button,Divider,Form,Input,Select,Upload,message,Card,Typography,Dropdown,Menu,Image,Radio,Checkbox,Tabs,Modal } from 'antd';
-import { RiseOutlined,CaretDownOutlined,CaretUpOutlined,CopyOutlined,SendOutlined,DeleteOutlined,CheckOutlined,UploadOutlined,ArrowLeftOutlined,EditOutlined,ArrowRightOutlined,CloseOutlined,LogoutOutlined,QuestionCircleOutlined,SafetyOutlined,LockOutlined,ToolOutlined,PlusOutlined,MoreOutlined,HeartOutlined,MessageOutlined,ShareAltOutlined,SearchOutlined,BellOutlined,HomeOutlined,FileAddOutlined,MailOutlined,UpOutlined,DownOutlined,AppstoreOutlined,UnorderedListOutlined,FilterOutlined,HeartFilled } from '@ant-design/icons';
+import { Tooltip,Alert,Badge,Tag,Affix,Breadcrumb,Button,Divider,Form,Input,Select,Upload,message,Card,Typography,Dropdown,Menu,Image,Radio,Checkbox,Tabs,Modal } from 'antd';
+import { ExclamationCircleFilled,DollarOutlined,RiseOutlined,CaretDownOutlined,CaretUpOutlined,CopyOutlined,SendOutlined,DeleteOutlined,CheckOutlined,UploadOutlined,ArrowLeftOutlined,EditOutlined,ArrowRightOutlined,CloseOutlined,LogoutOutlined,QuestionCircleOutlined,SafetyOutlined,LockOutlined,ToolOutlined,PlusOutlined,MoreOutlined,HeartOutlined,MessageOutlined,ShareAltOutlined,SearchOutlined,BellOutlined,HomeOutlined,FileAddOutlined,MailOutlined,UpOutlined,DownOutlined,AppstoreOutlined,UnorderedListOutlined,FilterOutlined,HeartFilled } from '@ant-design/icons';
 import logo from './assets/img/logo.png';
 import avatar from './assets/img/avatar.png';
 import ad1 from './assets/img/ad-1.png';
@@ -46,6 +46,15 @@ export default function BasicExample() {
   return (
   <Router>
     <Switch>
+      <Route path="/monetizationPayment">
+        <MonetizationPayment/>
+      </Route>
+      <Route path="/monetizationDetails">
+        <MonetizationDetails/>
+      </Route>
+      <Route path="/monetization">
+        <Monetization />
+      </Route>
       <Route path="/squadpagedetails">
         <SquadPageDetails />
       </Route>
@@ -124,6 +133,231 @@ export default function BasicExample() {
     </Switch>
   </Router>
   );
+}
+
+function MonetizationPayment() {
+  return(
+    <div>
+      <div className="container-fluid px-0 fixedTop bg-white">
+        <div className="container navBar py-2">
+          <div className="d-flex flex-row py-2 align-items-center justify-content-between">
+            <div className="d-flex flex-row align-items-center">
+              <ArrowLeftOutlined style={{ fontSize: '24px'}}/>
+            </div>
+          </div>
+        </div>
+        <Divider className="my-0"/>
+      </div>
+      <div className="container monetizationPage">
+        <div className="row">
+          <div className="col-12 px-0">
+            <div className="px-3 px-sm-0 py-3">
+              <Title level={5} className="mb-0">Payment Method <Tooltip title="prompt text" placement="bottom" ><QuestionCircleOutlined /></Tooltip></Title>
+            </div>
+            <div className="col-12 px-3 px-sm-0 inputLG border-x-0">
+                <Select defaultValue="Select Payment Method" style={{ width: '100%'}} className="border-left-0 border-right-0">
+                  <Option value="jack">Paypal</Option>
+                  <Option value="lucy">Stripe</Option>
+                </Select>
+            </div>
+            <div className="col-12 mt-4 px-3 px-sm-0">
+              <Button type="primary" className="w-100">Apply</Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function MonetizationDetails() {
+  return(
+    <div>
+      <div className="container-fluid px-0 fixedTop bg-white">
+        <div className="container navBar py-2">
+          <div className="d-flex flex-row py-2 align-items-center justify-content-between">
+            <div className="d-flex flex-row align-items-center">
+              <ArrowLeftOutlined style={{ fontSize: '24px'}}/>
+            </div>
+          </div>
+        </div>
+        <Divider className="my-0"/>
+      </div>
+
+      <div className="container createListItem">
+        <div className="row">
+          <div className="col-12 px-0 createListItemWrap d-flex flex-column">
+            <div>
+              <div className="col-12 px-0">
+                <Input placeholder="First name" className="border-left-0  border-right-0 border-top-0 lineInput" style={{borderRadius:'0px', height:'48px'}}/>
+              </div>
+              <div className="col-12 px-0">
+                <Input placeholder="Last name" className="border-left-0  border-right-0 border-top-0 lineInput" style={{borderRadius:'0px', height:'48px'}}/>
+              </div>
+              <div className="col-12 px-0 inputLG border-x-0">
+                <Select defaultValue="Select Country" style={{ width: '100%', height:'48px' }} className="border-left-0 border-right-0">
+                  <Option value="jack">United States of America </Option>
+                  <Option value="lucy">United Kingdom</Option>
+                </Select>
+              </div>
+              <div className="col-12 px-0">
+                <Input placeholder="Address" className="border-left-0  border-right-0 border-top-0 lineInput" style={{borderRadius:'0px', height:'48px'}}/>
+              </div>
+              <div className="col-12 px-0">
+                <Input placeholder="City" className="border-left-0  border-right-0 border-top-0 lineInput" style={{borderRadius:'0px', height:'48px'}}/>
+              </div>
+              <div className="col-12 px-0">
+                <Input placeholder="State / Province" className="border-left-0  border-right-0 border-top-0 lineInput" style={{borderRadius:'0px', height:'48px'}}/>
+              </div>
+              <div className="col-12 px-0">
+                <Input placeholder="Postal / ZIP" className="border-left-0  border-right-0 border-top-0 lineInput" style={{borderRadius:'0px', height:'48px'}}/>
+              </div>
+              <div className="col-12 px-0 inputLG border-x-0">
+                <Select defaultValue="Select document type" style={{ width: '100%', height:'48px' }} className="border-left-0 border-right-0">
+                  <Option value="jack">United States of America </Option>
+                  <Option value="lucy">United Kingdom</Option>
+                </Select>
+              </div>
+              <div className="col-12 px-3 px-sm-0">
+                <div className="mb-2 mt-3">
+                  <b>Photo of your ID</b>
+                </div>
+                <div>
+                  <Upload>
+                    <Button icon={<UploadOutlined />}>Click to Upload</Button>
+                  </Upload>
+                </div>
+                <div>
+                  <Text type="secondary">
+                  Please upload a photo of your ID document (i.e Passport or Drviving License)
+                  </Text>
+                </div>
+              </div>
+              <div className="col-12 px-3 px-sm-0">
+                <div className="mb-2 mt-3">
+                  <b>Photo of Holding your ID</b>
+                </div>
+                <div>
+                  <Upload>
+                    <Button icon={<UploadOutlined />}>Click to Upload</Button>
+                  </Upload>
+                </div>
+                <div>
+                  <Text type="secondary">
+                  Please upload a photo of your ID document (i.e Passport or Drviving License)
+                  </Text>
+                </div>
+              </div>
+              <div className="col-12 mt-3 px-3 px-sm-0">
+                <Checkbox className="checkboxGroupItem ml-0">
+                Agree to Rank.ly partner program terms of service
+                </Checkbox>
+              </div>
+              <div className="col-12 mt-4 px-3 px-sm-0">
+                <Button type="primary" className="w-100">Apply</Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function Monetization() {
+  return(
+    <div>
+      <div className="container-fluid px-0 fixedTop bg-white">
+        <div className="container navBar">
+          <div className="d-flex flex-row py-2 align-items-center justify-content-between">
+            <div className="d-flex flex-row align-items-center">
+              <img src={logo} className="Applogo mr-3" alt="logo" />
+            </div>
+            <div className="d-none d-lg-flex flex-grow-1">
+              <Search className="px-5" placeholder="input search text" />
+            </div>
+            <div className="d-flex flex-row align-items-center">
+              <SearchOutlined style={{ fontSize: '24px'}} className="d-lg-none mr-4 mr-lg-5"/>
+              <HeartOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <img src={bookmark} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <MailOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5 d-none d-lg-block"/>
+              <BellOutlined style={{ fontSize: '24px'}} className="mr-4 mr-lg-5"/>
+              <div className="navAvatarImgWrap">
+                <img src={avatar} className="navAvatarImg"/>
+              </div>
+              <Button type="primary" className="ml-4 d-none d-lg-block">Create Post</Button>
+            </div>
+          </div>
+        </div>
+        <Divider className="my-0"/>
+      </div>
+      <div className="container monetizationPage">
+        <div className="row">
+          <div className="col-12 px-0">
+            <div class="px-3 py-3">
+              <Alert
+                message="Monetization Eligibility"
+                description="You need to have 10 squad members and 50 favorites inorder to become eligible for Rank.ly monetization programe."
+                type="warning"
+              />
+            </div>
+            <div className="px-3 pb-3">
+              <Title level={5} className="mb-0">Eligibility Criteria</Title>
+            </div>
+            <div className="px-3">
+              <div className="d-flex flex-row py-3 justify-content-between">
+                <div className="d-flex flex-column">
+                  <Text>10 squad members</Text>
+                  <Text type="secondary">you have 5 members currently</Text>
+                </div>
+                <div>
+                <Text type="warning">
+                  <ExclamationCircleFilled/>
+                </Text>
+                </div>
+              </div>
+              <Divider className="my-0"/>
+            </div>
+            <div className="px-3">
+              <div className="d-flex flex-row py-3 justify-content-between">
+                <div className="d-flex flex-column">
+                  <Text>50 favorites</Text>
+                  <Text type="secondary">you have 23 favorites currently</Text>
+                </div>
+                <div>
+                <Text type="warning">
+                  <ExclamationCircleFilled/>
+                </Text>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="container-fluid px-0 fixedBottom bg-white d-lg-none">
+        <Divider className="my-0"/>
+          <div className="container navBar">
+            <div className="d-flex flex-row py-3">
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <HomeOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex align-items-center flex-fill align-items-center justify-content-center">
+                <HeartOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <FileAddOutlined style={{ fontSize: '24px'}}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+              <img src={bookmark}/>
+              </div>
+              <div className="d-flex flex-fill align-items-center justify-content-center">
+                <MailOutlined style={{ fontSize: '24px'}}/>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  )
 }
 
 function Signup() {
@@ -879,6 +1113,9 @@ const ListDetails = () =>{
                   }
                   />
                 </div>
+              </div>
+              <div className="d-flex flex-row align-items-center justify-content-between py-2">
+              <Button type="dashed" block>$300</Button>
               </div>
               <div className="cardExpert d-flex flex-row align-items-center justify-content-between py-2">
                 <div className="cardExpertLeft">
@@ -1864,6 +2101,13 @@ function AccountSettings(){
           </div>
           <div className="col-12 px-0 settingMenu">
             <div className="d-flex flex-row detailsSecondaryCard px-3 py-3 align-items-center">
+                <DollarOutlined className="mr-3" style={{fontSize:"24px"}} />
+                <Text type="primary">Monetization</Text>
+            </div>
+            <Divider className="my-0"/>
+          </div>
+          <div className="col-12 px-0 settingMenu">
+            <div className="d-flex flex-row detailsSecondaryCard px-3 py-3 align-items-center">
                 <Text type="danger"><LogoutOutlined className="mr-3" style={{fontSize:"24px"}}/></Text>
                 <Text type="danger">Logout</Text>
             </div>
@@ -2264,6 +2508,14 @@ function CreateListItem() {
                   <Option value="jack">Apply Now</Option>
                   <Option value="lucy">Book Now</Option>
                 </Select>
+              </div>
+              <div className="col-12 px-0 d-flex flex-row formUpload border-bottom bg-light">
+                <div className="flex-1 flex-fill d-flex align-items-center">
+                  <Text type="secondary" className="pl-2">Upload image</Text>
+                </div>
+                <Upload {...props}>
+                  <Button icon={<UploadOutlined />}>Upload</Button>
+                </Upload>
               </div>
             </div>
             <div className="listDescription">
